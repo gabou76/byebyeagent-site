@@ -1,0 +1,2744 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ByeByeAgent V2 — Maquette Landing Page Optimisée Conversion</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #4F46E5;
+  --primary-light: #818CF8;
+  --primary-dark: #3730A3;
+  --accent: #F97316;
+  --accent-light: #FDBA74;
+  --accent-dark: #EA580C;
+  --success: #10B981;
+  --success-light: #D1FAE5;
+  --danger: #EF4444;
+  --danger-light: #FEE2E2;
+  --bg: #FAFBFF;
+  --bg-alt: #F1F5FF;
+  --text: #1E293B;
+  --text-light: #64748B;
+  --text-lighter: #94A3B8;
+  --white: #FFFFFF;
+  --border: #E2E8F0;
+  --shadow: 0 4px 24px rgba(79,70,229,0.08);
+  --shadow-lg: 0 12px 40px rgba(79,70,229,0.12);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--bg);line-height:1.6;overflow-x:hidden}
+
+/* WATERMARK */
+.watermark{position:fixed;top:0;left:0;right:0;z-index:9999;background:linear-gradient(135deg,var(--primary),var(--accent));color:white;text-align:center;padding:10px;font-size:13px;font-weight:600}
+
+/* NAV - V3 ULTRA STYL\u00c9E */
+nav{position:sticky;top:40px;z-index:100;background:rgba(255,255,255,0.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(226,232,240,0);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:78px;transition:all .5s cubic-bezier(.16,1,.3,1)}
+nav.scrolled{background:rgba(255,255,255,0.88);backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);height:64px;border-bottom:1px solid rgba(226,232,240,.6);box-shadow:0 10px 40px -10px rgba(79,70,229,.12),0 2px 8px rgba(0,0,0,.04);padding:0 40px}
+.nav-inner{display:flex;align-items:center;gap:10px;transition:all .5s cubic-bezier(.16,1,.3,1)}
+
+/* LOGO STYL\u00c9 - embl\u00e8me + wordmark gradient */
+.nav-logo-mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 50%,var(--accent) 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:0 6px 20px -4px rgba(79,70,229,.4),inset 0 1px 0 rgba(255,255,255,.25);transition:all .5s cubic-bezier(.16,1,.3,1);flex-shrink:0}
+.nav-logo-mark::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(255,255,255,.18),transparent 50%);animation:logo-shine 12s linear infinite;opacity:.5}
+@keyframes logo-shine{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.nav-logo-mark svg{position:relative;z-index:2;width:24px;height:24px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.15))}
+nav.scrolled .nav-logo-mark{width:38px;height:38px;border-radius:10px;box-shadow:0 4px 14px -3px rgba(79,70,229,.45),inset 0 1px 0 rgba(255,255,255,.25)}
+nav.scrolled .nav-logo-mark svg{width:22px;height:22px}
+
+.nav-logo-img{height:36px;transition:height .3s ease;object-fit:contain;display:none}
+.nav-logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:23px;font-weight:800;color:var(--text);transition:all .5s cubic-bezier(.16,1,.3,1);letter-spacing:-.02em;line-height:1;display:flex;flex-direction:column}
+.nav-logo-text{display:flex;align-items:baseline;gap:1px}
+.nav-logo .word-bye{background:linear-gradient(135deg,var(--primary),var(--primary-dark));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:900}
+.nav-logo .word-agent{background:linear-gradient(135deg,var(--accent),var(--accent-dark));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:900}
+.nav-logo-tag{font-family:'Inter',sans-serif;font-size:9px;font-weight:600;color:var(--text-lighter);letter-spacing:.18em;text-transform:uppercase;margin-top:3px;transition:opacity .4s ease,max-height .4s ease;opacity:.85;max-height:14px;overflow:hidden}
+nav.scrolled .nav-logo{font-size:20px}
+nav.scrolled .nav-logo-tag{opacity:0;max-height:0;margin-top:0}
+
+.nav-links{display:flex;gap:4px;padding:6px;border-radius:50px;transition:all .5s ease}
+nav.scrolled .nav-links{background:rgba(241,245,255,.6);box-shadow:inset 0 1px 2px rgba(79,70,229,.05)}
+.nav-links a{text-decoration:none;color:var(--text-light);font-size:14px;font-weight:600;transition:all .25s cubic-bezier(.4,0,.2,1);position:relative;padding:8px 16px;border-radius:50px;letter-spacing:-.01em}
+.nav-links a:hover{color:var(--primary);background:rgba(79,70,229,.08)}
+nav.scrolled .nav-links a:hover{background:rgba(255,255,255,.9);box-shadow:0 2px 8px rgba(79,70,229,.08)}
+
+.nav-cta{background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:white;border:none;padding:12px 22px;border-radius:50px;font-weight:700;font-size:14px;cursor:pointer;transition:all .35s cubic-bezier(.16,1,.3,1);box-shadow:0 6px 18px -2px rgba(249,115,22,.4),inset 0 1px 0 rgba(255,255,255,.2);position:relative;overflow:hidden;letter-spacing:-.01em}
+.nav-cta::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:left .6s ease}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px -4px rgba(249,115,22,.5),inset 0 1px 0 rgba(255,255,255,.25)}
+.nav-cta:hover::before{left:100%}
+nav.scrolled .nav-cta{padding:10px 20px;font-size:13px;box-shadow:0 4px 14px -2px rgba(249,115,22,.42),inset 0 1px 0 rgba(255,255,255,.2)}
+
+/* HAMBURGER */
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;border-radius:8px;transition:background .2s}
+.nav-hamburger:hover{background:rgba(79,70,229,.06)}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .32s cubic-bezier(.16,1,.3,1)}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* MOBILE MENU DRAWER */
+.mobile-drawer{position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;pointer-events:none}
+.mobile-drawer-backdrop{position:absolute;inset:0;background:rgba(15,23,42,.45);opacity:0;transition:opacity .35s ease;backdrop-filter:blur(2px)}
+.mobile-drawer-panel{position:absolute;top:0;right:0;width:min(320px,85vw);height:100%;background:white;box-shadow:-8px 0 40px rgba(0,0,0,.14);transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;padding:28px 24px}
+.mobile-drawer.open{pointer-events:all}
+.mobile-drawer.open .mobile-drawer-backdrop{opacity:1}
+.mobile-drawer.open .mobile-drawer-panel{transform:translateX(0)}
+.drawer-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px}
+.drawer-close{width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:white;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text-light);transition:all .2s}
+.drawer-close:hover{background:var(--bg-alt);color:var(--text)}
+.drawer-links{display:flex;flex-direction:column;gap:4px;flex:1}
+.drawer-links a{text-decoration:none;color:var(--text);font-size:16px;font-weight:600;padding:13px 16px;border-radius:12px;transition:all .2s;display:flex;align-items:center;gap:10px}
+.drawer-links a:hover{background:var(--bg-alt);color:var(--primary)}
+.drawer-cta{width:100%;padding:14px;border-radius:50px;background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:white;border:none;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(249,115,22,.35);margin-top:24px;font-family:inherit}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* HERO */
+.hero{margin-top:40px;padding:90px 40px 80px;max-width:1200px;margin-left:auto;margin-right:auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--success-light);color:#065F46;padding:6px 16px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:24px}
+.hero-badge::before{content:"✓";font-weight:800}
+.hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:50px;line-height:1.1;font-weight:800;margin-bottom:20px}
+.hero h1 .highlight{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:18px;color:var(--text-light);margin-bottom:32px;max-width:480px;line-height:1.7}
+.hero-actions{display:flex;gap:16px;align-items:center;margin-bottom:32px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:white;border:none;padding:16px 32px;border-radius:50px;font-size:16px;font-weight:700;cursor:pointer;transition:all .3s;box-shadow:0 6px 20px rgba(249,115,22,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(249,115,22,.45)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--primary);border:2px solid var(--primary);padding:14px 28px;border-radius:50px;font-size:15px;font-weight:600;cursor:pointer;transition:all .3s}
+.btn-secondary:hover{background:var(--primary);color:white}
+.hero-proof{display:flex;gap:24px;align-items:center}
+.hero-proof-item{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text-light)}
+.hero-proof-item strong{color:var(--text);font-size:15px}
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
+.hero-card{background:white;border-radius:20px;padding:28px;box-shadow:var(--shadow-lg);width:100%;max-width:440px;position:relative}
+.hero-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.hero-card-header h3{font-size:13px;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.hero-card-badge{background:var(--success-light);color:#065F46;padding:4px 12px;border-radius:50px;font-size:12px;font-weight:700}
+.savings-display{text-align:center;padding:20px 0}
+.savings-display .amount{font-family:'Plus Jakarta Sans',sans-serif;font-size:52px;font-weight:800;color:var(--success)}
+.savings-display .label{font-size:14px;color:var(--text-light);margin-top:4px}
+.savings-bar{display:flex;gap:12px;margin-top:16px}
+.savings-bar-item{flex:1;text-align:center;padding:12px;border-radius:var(--radius-sm)}
+.savings-bar-item.agency{background:#FEE2E2}
+.savings-bar-item.us{background:var(--success-light)}
+.savings-bar-item .bar-label{font-size:11px;color:var(--text-light);font-weight:500}
+.savings-bar-item .bar-value{font-size:18px;font-weight:700;margin-top:2px}
+.savings-bar-item.agency .bar-value{color:#DC2626;text-decoration:line-through}
+.savings-bar-item.us .bar-value{color:var(--success)}
+.hero-float{position:absolute;background:white;border-radius:12px;padding:12px 16px;box-shadow:0 8px 24px rgba(0,0,0,.1);display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;animation:float 3s ease-in-out infinite}
+.hero-float.top-right{top:-20px;right:-20px}
+.hero-float.bottom-left{bottom:-15px;left:-15px;animation-delay:1.5s}
+.hero-float .float-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.hero-float .float-icon.green{background:var(--success-light)}
+.hero-float .float-icon.blue{background:#DBEAFE}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ===== ESTIMATION WIDGET ===== */
+.estimate{padding:80px 40px;background:linear-gradient(180deg,var(--bg) 0%,var(--bg-alt) 100%);position:relative;overflow:hidden}
+.estimate::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(249,115,22,.08),transparent 70%);pointer-events:none}
+.estimate::after{content:'';position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.08),transparent 70%);pointer-events:none}
+.estimate-container{max-width:1100px;margin:auto;position:relative;z-index:1}
+.estimate-header{text-align:center;margin-bottom:36px}
+.estimate-header h2 .highlight{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.estimate-card{background:white;border-radius:28px;padding:0;box-shadow:0 24px 60px -20px rgba(79,70,229,.18),0 8px 24px rgba(0,0,0,.04);display:grid;grid-template-columns:1.05fr 1fr;overflow:hidden;border:1px solid rgba(226,232,240,.6)}
+.estimate-form{padding:40px}
+.estimate-result{background:linear-gradient(135deg,#1E1B4B 0%,var(--primary-dark) 50%,var(--primary) 100%);color:white;padding:40px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.estimate-result::before{content:'';position:absolute;top:-50%;right:-30%;width:120%;height:120%;background:radial-gradient(circle,rgba(249,115,22,.18),transparent 50%);pointer-events:none}
+
+.est-row{margin-bottom:22px;position:relative;z-index:2}
+.est-row label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;letter-spacing:-.01em}
+.est-row label strong{color:var(--primary);font-weight:700}
+
+.est-toggle{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:var(--bg-alt);padding:4px;border-radius:14px}
+.est-toggle-btn{padding:12px;border:none;background:transparent;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;transition:all .3s cubic-bezier(.16,1,.3,1);color:var(--text-light);display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit}
+.est-toggle-btn.active{background:white;color:var(--primary);box-shadow:0 4px 12px rgba(79,70,229,.12);transform:translateY(-1px)}
+
+.est-input{width:100%;padding:14px 16px;border:1.5px solid var(--border);border-radius:12px;font-size:14px;font-family:inherit;background:white;transition:all .25s ease;color:var(--text)}
+.est-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px rgba(79,70,229,.08)}
+.est-input::placeholder{color:var(--text-lighter)}
+
+.est-slider{width:100%;appearance:none;height:6px;border-radius:3px;background:linear-gradient(to right,var(--primary) 0%,var(--primary) var(--slider-pct,30%),var(--border) var(--slider-pct,30%),var(--border) 100%);outline:none}
+.est-slider::-webkit-slider-thumb{appearance:none;width:22px;height:22px;border-radius:50%;background:white;border:3px solid var(--primary);cursor:pointer;box-shadow:0 4px 12px rgba(79,70,229,.3);transition:transform .2s}
+.est-slider::-webkit-slider-thumb:hover{transform:scale(1.15)}
+.est-slider::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:white;border:3px solid var(--primary);cursor:pointer;box-shadow:0 4px 12px rgba(79,70,229,.3)}
+
+.est-pieces{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.est-piece-btn{padding:12px 0;border:1.5px solid var(--border);background:white;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;transition:all .25s cubic-bezier(.16,1,.3,1);color:var(--text-light);font-family:inherit}
+.est-piece-btn:hover{border-color:var(--primary-light);color:var(--primary)}
+.est-piece-btn.active{border-color:var(--primary);background:var(--primary);color:white;box-shadow:0 6px 16px -4px rgba(79,70,229,.4);transform:translateY(-1px)}
+
+.est-select{width:100%;padding:14px 16px;border:1.5px solid var(--border);border-radius:12px;font-size:14px;font-family:inherit;background:white;cursor:pointer;color:var(--text);appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'><path d='M4 6l4 4 4-4' stroke='%2364748B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
+.est-select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px rgba(79,70,229,.08)}
+
+.est-result-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;opacity:.7;margin-bottom:10px;position:relative;z-index:2}
+.est-result-range{font-family:'Plus Jakarta Sans',sans-serif;font-size:36px;font-weight:800;line-height:1.1;margin-bottom:8px;position:relative;z-index:2;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.est-result-range .est-dash{opacity:.4;font-weight:400}
+.est-result-range #estLow,.est-result-range #estHigh{background:linear-gradient(135deg,#FFFFFF,var(--accent-light));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;transition:opacity .3s}
+.est-result-avg{font-size:14px;opacity:.85;margin-bottom:20px;position:relative;z-index:2}
+.est-result-avg strong{font-weight:700;color:var(--accent-light)}
+
+.est-result-meter{height:8px;background:rgba(255,255,255,.12);border-radius:4px;overflow:hidden;margin-bottom:24px;position:relative;z-index:2}
+.est-meter-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));border-radius:4px;width:50%;transition:width .8s cubic-bezier(.16,1,.3,1);box-shadow:0 0 12px rgba(249,115,22,.5)}
+
+.est-result-bottom{position:relative;z-index:2}
+.est-savings-tip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(10px);border-radius:14px;padding:14px 16px;font-size:13px;line-height:1.5;margin-bottom:16px}
+.est-savings-tip strong{color:#FBBF24;font-weight:800;font-size:15px}
+.est-cta{width:100%;background:white !important;color:var(--primary) !important;justify-content:center;font-weight:700;padding:14px 20px !important;font-size:14px !important;box-shadow:0 8px 24px -4px rgba(0,0,0,.25) !important}
+.est-cta:hover{background:#FAFBFF !important;transform:translateY(-2px)}
+.est-disclaimer{font-size:11px;opacity:.6;margin-top:14px;line-height:1.5}
+
+/* STATS */
+.stats{background:linear-gradient(135deg,var(--primary-dark),var(--primary));padding:60px 40px}
+.stats-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.stat-card{text-align:center;color:white}
+.stat-number{font-family:'Plus Jakarta Sans',sans-serif;font-size:42px;font-weight:800}
+.stat-label{font-size:14px;opacity:.85;margin-top:4px;font-weight:500}
+
+/* SECTION HEADERS */
+.section-header{text-align:center;margin-bottom:60px}
+.section-tag{display:inline-block;background:var(--bg-alt);color:var(--primary);padding:6px 16px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:12px;border:1px solid rgba(79,70,229,.1)}
+.section-header h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:38px;font-weight:800;margin-bottom:12px}
+.section-header p{font-size:17px;color:var(--text-light);max-width:560px;margin:auto}
+
+/* ===== NEW: VS COMPARISON ===== */
+.vs-section{padding:100px 40px;max-width:1100px;margin:auto}
+.vs-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch}
+.vs-card{border-radius:20px;padding:40px 32px}
+.vs-card.agency{background:var(--danger-light);border:2px solid #FECACA}
+.vs-card.bba{background:var(--success-light);border:2px solid #A7F3D0}
+.vs-card h3{font-size:22px;font-weight:800;margin-bottom:6px}
+.vs-card.agency h3{color:#991B1B}
+.vs-card.bba h3{color:#065F46}
+.vs-card .vs-subtitle{font-size:14px;margin-bottom:24px;opacity:.7}
+.vs-card.agency .vs-subtitle{color:#991B1B}
+.vs-card.bba .vs-subtitle{color:#065F46}
+.vs-list{list-style:none;padding:0}
+.vs-list li{padding:10px 0;font-size:14px;display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid rgba(0,0,0,.06)}
+.vs-list li:last-child{border:none}
+.vs-list li .icon{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-top:1px}
+.vs-card.agency .icon{background:#FECACA;color:#991B1B}
+.vs-card.bba .icon{background:#A7F3D0;color:#065F46}
+.vs-card .vs-price{margin-top:24px;text-align:center;padding:16px;border-radius:12px}
+.vs-card.agency .vs-price{background:rgba(239,68,68,.1)}
+.vs-card.bba .vs-price{background:rgba(16,185,129,.1)}
+.vs-price .price-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.vs-price .price-amount{font-family:'Plus Jakarta Sans',sans-serif;font-size:36px;font-weight:800}
+.vs-card.agency .price-amount{color:var(--danger);text-decoration:line-through}
+.vs-card.bba .price-amount{color:var(--success)}
+.vs-middle{display:flex;align-items:center;justify-content:center;padding:0 16px}
+.vs-badge{background:var(--text);color:white;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;box-shadow:0 4px 16px rgba(0,0,0,.2);z-index:1}
+
+/* ===== NEW: COST TIMELINE ===== */
+.cost-timeline{background:var(--bg-alt);padding:100px 40px}
+.timeline-container{max-width:800px;margin:auto}
+.timeline-visual{background:white;border-radius:24px;padding:40px;box-shadow:var(--shadow-lg)}
+.timeline-row{display:grid;grid-template-columns:100px 1fr 140px;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)}
+.timeline-row:last-child{border:none}
+.timeline-row.header{font-weight:700;font-size:13px;color:var(--text-light);text-transform:uppercase;letter-spacing:.5px;padding-bottom:20px;border-bottom:2px solid var(--border)}
+.timeline-month{font-weight:700;color:var(--text);font-size:15px}
+.timeline-bar-container{position:relative;height:32px;display:flex;align-items:center;gap:8px}
+.timeline-bar{height:28px;border-radius:8px;display:flex;align-items:center;padding:0 12px;font-size:12px;font-weight:700;color:white;transition:width .8s ease}
+.timeline-bar.bba{background:linear-gradient(135deg,var(--success),#059669)}
+.timeline-bar.agency{background:linear-gradient(135deg,var(--danger),#DC2626);position:absolute;top:2px;opacity:.15;border-radius:8px;height:28px}
+.timeline-cumul{text-align:right}
+.timeline-cumul .bba-cost{font-weight:700;color:var(--success);font-size:16px}
+.timeline-cumul .agency-cost{font-size:12px;color:var(--text-lighter);text-decoration:line-through}
+.timeline-bottom{display:flex;justify-content:space-between;margin-top:24px;padding:20px;background:linear-gradient(135deg,var(--success),#059669);border-radius:var(--radius);color:white}
+.timeline-bottom .tb-label{font-size:13px;opacity:.85}
+.timeline-bottom .tb-value{font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:800}
+
+/* ===== NEW: QUIZ ===== */
+.quiz-section{padding:100px 40px;max-width:700px;margin:auto}
+.quiz-card{background:white;border-radius:24px;padding:48px;box-shadow:var(--shadow-lg);text-align:center}
+.quiz-card h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:30px;font-weight:800;margin-bottom:8px}
+.quiz-card .sub{color:var(--text-light);font-size:15px;margin-bottom:36px}
+.quiz-progress{display:flex;gap:6px;margin-bottom:32px;justify-content:center}
+.quiz-progress .dot{width:10px;height:10px;border-radius:50%;background:var(--border);transition:all .3s}
+.quiz-progress .dot.active{background:var(--primary);width:28px;border-radius:5px}
+.quiz-progress .dot.done{background:var(--success)}
+.quiz-question{font-size:18px;font-weight:600;margin-bottom:24px;min-height:54px}
+.quiz-options{display:grid;gap:12px}
+.quiz-option{padding:16px 20px;border:2px solid var(--border);border-radius:12px;font-size:15px;cursor:pointer;transition:all .2s;text-align:left;background:white;font-weight:500}
+.quiz-option:hover{border-color:var(--primary);background:rgba(79,70,229,.03)}
+.quiz-option.selected{border-color:var(--primary);background:rgba(79,70,229,.06);font-weight:600}
+.quiz-result{display:none}
+.quiz-result.show{display:block}
+.quiz-result .score-ring{width:120px;height:120px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'Plus Jakarta Sans',sans-serif}
+.quiz-result .score-ring.high{background:var(--success-light);color:#065F46}
+.quiz-result .score-ring.medium{background:#FEF3C7;color:#92400E}
+.quiz-result .score-ring .score-num{font-size:36px;font-weight:800;line-height:1}
+.quiz-result .score-ring .score-label{font-size:11px;font-weight:600}
+.quiz-result p{font-size:15px;color:var(--text-light);margin-bottom:24px;line-height:1.7}
+
+/* HOW STEPS */
+.how{padding:100px 40px;max-width:1100px;margin:auto}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.step-card{background:white;border-radius:var(--radius);padding:32px 24px;text-align:center;box-shadow:var(--shadow);border:1px solid var(--border);transition:all .3s;position:relative}
+.step-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.step-number{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;margin:0 auto 16px;color:white;background:linear-gradient(135deg,var(--primary),var(--primary-light))}
+.step-card h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.step-card p{font-size:14px;color:var(--text-light);line-height:1.5}
+.step-arrow{position:absolute;right:-20px;top:50%;color:var(--primary-light);font-size:20px;z-index:1}
+
+/* CALCULATOR */
+.calculator{background:var(--bg-alt);padding:100px 40px}
+.calc-container{max-width:700px;margin:auto;background:white;border-radius:24px;padding:48px;box-shadow:var(--shadow-lg)}
+.calc-container h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:800;text-align:center;margin-bottom:8px}
+.calc-container .sub{text-align:center;color:var(--text-light);margin-bottom:36px;font-size:15px}
+.calc-input-group{margin-bottom:28px}
+.calc-input-group label{display:block;font-size:14px;font-weight:600;margin-bottom:8px}
+.calc-slider{width:100%;appearance:none;height:8px;border-radius:4px;background:var(--border);outline:none;margin-bottom:8px}
+.calc-slider::-webkit-slider-thumb{appearance:none;width:24px;height:24px;border-radius:50%;background:var(--primary);cursor:pointer;box-shadow:0 2px 8px rgba(79,70,229,.3)}
+.calc-value{display:flex;justify-content:space-between;font-size:13px;color:var(--text-light)}
+.calc-value strong{color:var(--primary);font-size:28px;font-family:'Plus Jakarta Sans',sans-serif}
+.calc-result{background:linear-gradient(135deg,var(--success),#059669);border-radius:var(--radius);padding:32px;text-align:center;color:white;margin-top:32px}
+.calc-result .big{font-family:'Plus Jakarta Sans',sans-serif;font-size:48px;font-weight:800}
+.calc-result .small{font-size:15px;opacity:.9;margin-top:4px}
+.calc-comparison{display:flex;gap:16px;margin-top:20px;justify-content:center;flex-wrap:wrap}
+.calc-comparison div{background:rgba(255,255,255,.15);padding:10px 20px;border-radius:var(--radius-sm);font-size:13px}
+.calc-comparison strong{font-size:16px;display:block}
+.calc-cta{text-align:center;margin-top:28px}
+.calc-note{text-align:center;margin-top:12px;font-size:13px;color:var(--text-lighter)}
+
+/* PRICING */
+.pricing{padding:100px 40px;max-width:1100px;margin:auto}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:900px;margin:auto}
+.price-card{background:white;border-radius:24px;padding:40px 32px;box-shadow:var(--shadow);border:2px solid var(--border);position:relative;transition:all .3s}
+.price-card.featured{border-color:var(--primary);transform:scale(1.03);box-shadow:0 12px 40px rgba(79,70,229,.18)}
+.price-card .popular-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--primary),var(--accent));color:white;padding:6px 20px;border-radius:50px;font-size:12px;font-weight:700;white-space:nowrap}
+.price-card h3{font-size:20px;font-weight:700;margin-bottom:4px}
+.price-card .price-desc{font-size:14px;color:var(--text-light);margin-bottom:20px}
+.price-card .price{font-family:'Plus Jakarta Sans',sans-serif;font-size:44px;font-weight:800}
+.price-card .price .period{font-size:16px;font-weight:500;color:var(--text-light)}
+.price-card .price-daily{font-size:13px;color:var(--accent);font-weight:600;margin-top:2px}
+.price-card .price-compare{font-size:13px;color:var(--success);font-weight:600;margin-top:4px;margin-bottom:24px}
+.price-features{list-style:none;padding:0;margin-bottom:28px}
+.price-features li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:14px;border-bottom:1px solid var(--border)}
+.price-features li:last-child{border:none}
+.price-features li::before{content:"✓";color:var(--success);font-weight:700;flex-shrink:0;margin-top:1px}
+.price-features li.highlight{font-weight:600;color:var(--primary)}
+.price-features li.highlight::before{content:"★";color:var(--accent)}
+.price-btn{width:100%;padding:14px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;transition:all .3s;border:none}
+.price-btn.outline{background:transparent;border:2px solid var(--primary);color:var(--primary)}
+.price-btn.outline:hover{background:var(--primary);color:white}
+.price-btn.filled{background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:white;box-shadow:0 4px 16px rgba(249,115,22,.3)}
+.price-btn.filled:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(249,115,22,.4)}
+.guarantee-wrapper{text-align:center;margin-top:32px}
+.guarantee{display:inline-flex;align-items:center;gap:12px;padding:20px 32px;background:var(--success-light);border-radius:var(--radius);font-size:15px;font-weight:600;color:#065F46}
+.pricing-note{text-align:center;margin-top:16px;font-size:13px;color:var(--text-lighter)}
+
+/* PORTALS */
+.portals{background:var(--bg-alt);padding:60px 40px}
+.portals-inner{max-width:900px;margin:auto;text-align:center}
+.portals-inner p{font-size:14px;color:var(--text-light);margin-bottom:20px;font-weight:500}
+.portal-logos{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;align-items:center}
+.portal-logo{background:white;padding:12px 20px;border-radius:var(--radius-sm);font-size:14px;font-weight:700;color:var(--text-light);box-shadow:0 2px 8px rgba(0,0,0,.04);border:1px solid var(--border)}
+.portal-logo.main{color:var(--primary);border-color:var(--primary-light);background:rgba(79,70,229,.04)}
+
+/* ===== LIVE FEED V2 - REAL TIME ACTIVITY ===== */
+.live-feed{padding:100px 40px;background:linear-gradient(180deg,white 0%,var(--bg) 100%);position:relative;overflow:hidden}
+.live-feed::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
+.feed-container{max-width:1100px;margin:auto;position:relative}
+.feed-header-wrap{display:flex;flex-direction:column;align-items:center;gap:18px;margin-bottom:32px}
+.feed-live-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(239,68,68,.08);color:var(--danger);padding:6px 14px;border-radius:50px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;border:1px solid rgba(239,68,68,.15)}
+.feed-live-badge .live-dot{width:8px;height:8px;border-radius:50%;background:var(--danger);box-shadow:0 0 0 0 rgba(239,68,68,.4);animation:live-pulse 1.8s ease-out infinite}
+@keyframes live-pulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}70%{box-shadow:0 0 0 10px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
+.feed-header-wrap h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:800;letter-spacing:-.02em;text-align:center}
+.feed-header-wrap h2 span{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.feed-header-wrap p{font-size:14px;color:var(--text-light);text-align:center;max-width:480px}
+/* Stats counter bar */
+.feed-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;padding:20px;background:white;border-radius:18px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.feed-stat{text-align:center;position:relative}
+.feed-stat:not(:last-child)::after{content:'';position:absolute;top:50%;right:-8px;transform:translateY(-50%);width:1px;height:36px;background:var(--border)}
+.feed-stat-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:800;color:var(--text);line-height:1;display:flex;align-items:baseline;justify-content:center;gap:3px}
+.feed-stat-num .live-mini-dot{width:6px;height:6px;border-radius:50%;background:var(--success);animation:pulse-mini 1.2s ease-in-out infinite;align-self:center;margin-right:2px}
+@keyframes pulse-mini{0%,100%{opacity:1}50%{opacity:.3}}
+.feed-stat-num .num-target{color:var(--primary)}
+.feed-stat-num .num-success{color:var(--success)}
+.feed-stat-num .num-accent{color:var(--accent)}
+.feed-stat-lbl{font-size:11px;color:var(--text-light);font-weight:600;margin-top:4px;text-transform:uppercase;letter-spacing:.06em}
+/* Marquee scroller */
+.feed-marquee{position:relative;overflow:hidden;mask:linear-gradient(90deg,transparent 0,black 6%,black 94%,transparent 100%);-webkit-mask:linear-gradient(90deg,transparent 0,black 6%,black 94%,transparent 100%)}
+.feed-track{display:flex;gap:14px;width:max-content;animation:feed-scroll 60s linear infinite}
+.feed-marquee:hover .feed-track{animation-play-state:paused}
+@keyframes feed-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.feed-item{min-width:300px;max-width:300px;background:white;border-radius:14px;padding:16px;border:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.04);flex-shrink:0;transition:all .25s ease;cursor:default;position:relative;overflow:hidden}
+.feed-item:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.06);border-color:var(--primary-light)}
+.feed-item-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:8px}
+.feed-type{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;border-radius:50px;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.feed-type.sold{background:rgba(16,185,129,.1);color:var(--success)}
+.feed-type.new{background:rgba(79,70,229,.1);color:var(--primary)}
+.feed-type.visit{background:rgba(249,115,22,.1);color:var(--accent-dark)}
+.feed-type.offer{background:rgba(168,85,247,.1);color:#7C3AED}
+.feed-type.compromis{background:rgba(14,165,233,.1);color:#0284C7}
+.feed-type.savings{background:rgba(245,158,11,.1);color:#B45309}
+.feed-time{font-size:11px;color:var(--text-lighter);font-weight:500;display:flex;align-items:center;gap:4px;flex-shrink:0}
+.feed-time .time-dot{width:5px;height:5px;border-radius:50%;background:var(--success);flex-shrink:0}
+.feed-time.recent .time-dot{animation:pulse-mini 1.2s ease-in-out infinite}
+.feed-detail{font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.35}
+.feed-meta{font-size:12px;color:var(--text-light);line-height:1.5;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.feed-meta .feed-sep{color:var(--text-lighter);font-size:8px}
+.feed-meta .feed-savings{font-weight:700;color:var(--success);display:inline-flex;align-items:center;gap:3px}
+.feed-meta .feed-loc{display:inline-flex;align-items:center;gap:3px;color:var(--text-light)}
+/* Trust line under */
+.feed-trust-line{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:24px;font-size:12px;color:var(--text-light);font-weight:500}
+.feed-trust-line strong{color:var(--text);font-weight:700}
+.feed-trust-line .feed-trust-avatars{display:flex}
+.feed-trust-line .feed-trust-avatars span{width:24px;height:24px;border-radius:50%;border:2px solid white;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:white;margin-left:-6px;background:linear-gradient(135deg,var(--primary),var(--accent))}
+.feed-trust-line .feed-trust-avatars span:first-child{margin-left:0}
+.feed-trust-line .feed-trust-avatars span:nth-child(2){background:linear-gradient(135deg,var(--success),#059669)}
+.feed-trust-line .feed-trust-avatars span:nth-child(3){background:linear-gradient(135deg,var(--accent),var(--accent-dark))}
+.feed-trust-line .feed-trust-avatars span:nth-child(4){background:linear-gradient(135deg,#7C3AED,#5B21B6)}
+
+/* TESTIMONIALS */
+.testimonials{padding:100px 40px;max-width:1100px;margin:auto}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testimonial-card{background:white;border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.testimonial-stars{color:#FBBF24;font-size:16px;margin-bottom:12px;letter-spacing:2px}
+.testimonial-text{font-size:15px;line-height:1.7;margin-bottom:20px;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:white}
+.testimonial-name{font-weight:600;font-size:14px}
+.testimonial-detail{font-size:12px;color:var(--text-light)}
+.testimonial-savings{display:inline-block;background:var(--success-light);color:#065F46;padding:2px 10px;border-radius:50px;font-size:12px;font-weight:700;margin-top:4px}
+.testimonial-meta{text-align:center;margin-top:32px}
+.testimonial-meta .rating{font-size:32px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif}
+.testimonial-meta .rating-text{font-size:14px;color:var(--text-light)}
+
+/* ===== TRUST SIGNALS V3 - LOGOS DYNAMIQUES ===== */
+.trust{padding:60px 40px;background:var(--bg-alt);position:relative;overflow:hidden}
+.trust::before{content:'';position:absolute;top:-50%;left:-10%;width:120%;height:200%;background:radial-gradient(ellipse at center,rgba(79,70,229,.04) 0%,transparent 60%);pointer-events:none}
+.trust-grid{max-width:960px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;z-index:1}
+.trust-item{text-align:center;padding:28px 16px;border-radius:18px;background:white;border:1px solid var(--border);transition:all .4s cubic-bezier(.16,1,.3,1);cursor:default;position:relative;overflow:hidden}
+.trust-item::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.trust-item:hover{transform:translateY(-6px);box-shadow:0 18px 40px -12px rgba(79,70,229,.18),0 4px 12px rgba(0,0,0,.04);border-color:transparent}
+.trust-item:hover::after{transform:scaleX(1)}
+.trust-icon{width:56px;height:56px;border-radius:16px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;position:relative;transition:all .4s cubic-bezier(.16,1,.3,1)}
+.trust-icon svg{width:30px;height:30px;position:relative;z-index:2;transition:all .4s cubic-bezier(.16,1,.3,1)}
+.trust-icon::before{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(135deg,var(--ti-c1),var(--ti-c2));opacity:.14;transition:all .4s ease}
+.trust-icon::after{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(135deg,var(--ti-c1),var(--ti-c2));opacity:0;transition:all .4s ease;filter:blur(14px)}
+.trust-item:hover .trust-icon::before{opacity:.22;transform:scale(1.05)}
+.trust-item:hover .trust-icon::after{opacity:.45}
+.trust-item:hover .trust-icon{transform:translateY(-2px)}
+
+/* Variantes couleurs */
+.trust-icon.shield{--ti-c1:#10B981;--ti-c2:#059669}
+.trust-icon.building{--ti-c1:#4F46E5;--ti-c2:#7C3AED}
+.trust-icon.lock{--ti-c1:#F97316;--ti-c2:#EA580C}
+.trust-icon.phone{--ti-c1:#0EA5E9;--ti-c2:#2563EB}
+
+/* Animations dynamiques par icone */
+@keyframes shield-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@keyframes building-rise{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes lock-jiggle{0%,90%,100%{transform:rotate(0)}93%{transform:rotate(-6deg)}96%{transform:rotate(6deg)}}
+@keyframes phone-ring{0%,90%,100%{transform:rotate(0)}92%{transform:rotate(-10deg)}94%{transform:rotate(10deg)}96%{transform:rotate(-10deg)}98%{transform:rotate(10deg)}}
+@keyframes dash-draw{from{stroke-dashoffset:30}to{stroke-dashoffset:0}}
+
+.trust-item:hover .trust-icon.shield svg{animation:shield-pulse 1.2s ease-in-out infinite}
+.trust-item:hover .trust-icon.building svg{animation:building-rise 1.4s ease-in-out infinite}
+.trust-item:hover .trust-icon.lock svg{animation:lock-jiggle 1.6s ease-in-out infinite}
+.trust-item:hover .trust-icon.phone svg{animation:phone-ring 1.8s ease-in-out infinite;transform-origin:50% 50%}
+.trust-item:hover .ti-check{stroke-dasharray:30;animation:dash-draw .6s ease-out forwards}
+
+.trust-label{font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.01em;margin-top:4px}
+.trust-sub{font-size:12px;color:var(--text-light);margin-top:4px;line-height:1.4}
+
+/* ===== VS AUTRES PAP ===== */
+.vs-pap{padding:100px 40px;background:linear-gradient(180deg,white 0%,var(--bg-alt) 100%)}
+.vs-pap .section-header,.vs-pap .vs-pap-table{max-width:1100px;margin-left:auto;margin-right:auto}
+.vs-pap-table{background:white;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--border)}
+.vs-pap-row{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;align-items:center;padding:18px 24px;border-bottom:1px solid var(--border);font-size:14px}
+.vs-pap-row:last-child{border:none}
+.vs-pap-row.vs-pap-header{background:linear-gradient(135deg,var(--bg-alt),var(--bg));font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);padding:20px 24px}
+.vs-pap-row.vs-pap-header .vs-pap-us{color:var(--primary);text-transform:none;font-size:14px}
+.vs-pap-row > div:first-child{font-weight:600;color:var(--text)}
+.vs-pap-row > div:not(:first-child):not(.vs-pap-us){text-align:center;color:var(--text-light);font-size:18px}
+.vs-pap-us{text-align:center;color:var(--success);font-weight:700;background:linear-gradient(135deg,rgba(16,185,129,.04),rgba(79,70,229,.04));padding:8px 12px;border-radius:8px;font-size:14px}
+.vs-pap-cta{margin-top:32px;text-align:center}
+
+/* ===== OBJECTIONS ===== */
+.objections{padding:100px 40px;background:var(--bg-alt)}
+.objections .section-header,.objections .obj-grid{max-width:1100px;margin-left:auto;margin-right:auto}
+.obj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.obj-card{background:white;border-radius:18px;padding:28px;border:1px solid var(--border);box-shadow:var(--shadow);transition:all .35s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
+.obj-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--accent),var(--accent-dark));transform:scaleY(0);transform-origin:top;transition:transform .4s ease}
+.obj-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:transparent}
+.obj-card:hover::before{transform:scaleY(1)}
+.obj-fear{font-size:15px;font-weight:700;color:var(--text);margin-bottom:14px;line-height:1.4;padding-left:6px;border-left:3px solid var(--danger);padding:8px 0 8px 14px;background:linear-gradient(90deg,rgba(239,68,68,.04),transparent)}
+.obj-answer{font-size:14px;color:var(--text-light);line-height:1.65;padding-left:14px}
+.obj-answer strong{color:var(--text);font-weight:700}
+.obj-answer em{font-style:normal;background:linear-gradient(180deg,transparent 60%,rgba(16,185,129,.25) 60%);padding:0 2px}
+
+/* ===== SUPPORT 360 ===== */
+.support-360{padding:100px 40px;background:linear-gradient(180deg,var(--bg-alt) 0%,white 100%);position:relative}
+.support-360 .section-header{max-width:1100px;margin:0 auto 50px}
+.support-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.support-card{background:white;border-radius:20px;padding:32px 26px;border:1px solid var(--border);box-shadow:var(--shadow);transition:all .35s cubic-bezier(.16,1,.3,1)}
+.support-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.support-icon{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:18px;transition:transform .3s ease}
+.support-card:hover .support-icon{transform:scale(1.08) rotate(-3deg)}
+.support-card h3{font-size:18px;font-weight:700;margin-bottom:14px;letter-spacing:-.01em}
+.support-card ul{list-style:none;padding:0}
+.support-card ul li{font-size:13.5px;color:var(--text-light);line-height:1.6;padding:7px 0 7px 22px;position:relative}
+.support-card ul li::before{content:'\2713';position:absolute;left:0;top:7px;color:var(--success);font-weight:800}
+
+/* ===== R\u00c9SEAU ===== */
+.network{padding:100px 40px;background:white;position:relative;overflow:hidden}
+.network::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(79,70,229,.04),transparent 60%);pointer-events:none}
+.network-inner{max-width:1100px;margin:auto;position:relative;z-index:1}
+.network-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:24px;margin-bottom:32px}
+.net-stat{text-align:center;padding:28px 16px;background:linear-gradient(135deg,var(--bg) 0%,var(--bg-alt) 100%);border-radius:18px;border:1px solid var(--border);transition:all .3s ease}
+.net-stat:hover{transform:translateY(-4px);box-shadow:0 12px 30px -8px rgba(79,70,229,.15);border-color:var(--primary-light)}
+.net-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:38px;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.net-lbl{font-size:13px;color:var(--text-light);font-weight:600;margin-top:8px;line-height:1.4}
+.net-coverage{text-align:center;font-size:14px;color:var(--text);background:var(--bg-alt);padding:16px 24px;border-radius:12px;font-weight:600;border:1px dashed var(--border)}
+.net-coverage strong{color:var(--primary)}
+
+/* ===== BENEFITS HIDDEN ===== */
+.benefits-hidden{padding:100px 40px;background:linear-gradient(180deg,white 0%,var(--bg-alt) 100%)}
+.benefits-hidden .section-header,.benefits-hidden .benefits-grid{max-width:1100px;margin-left:auto;margin-right:auto}
+.benefits-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.ben-card{background:linear-gradient(180deg,white 0%,var(--bg) 100%);border-radius:18px;padding:28px 22px;border:1px solid var(--border);text-align:center;transition:all .35s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
+.ben-card::after{content:'';position:absolute;top:-50%;right:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(249,115,22,.05),transparent 50%);opacity:0;transition:opacity .4s ease}
+.ben-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:transparent}
+.ben-card:hover::after{opacity:1}
+.ben-icon{font-size:34px;margin-bottom:14px;display:inline-block;transition:transform .4s ease;position:relative;z-index:1}
+.ben-card:hover .ben-icon{transform:scale(1.15) translateY(-3px)}
+.ben-card h3{font-size:16px;font-weight:700;margin-bottom:8px;color:var(--text);position:relative;z-index:1}
+.ben-card p{font-size:13px;color:var(--text-light);line-height:1.6;position:relative;z-index:1}
+
+/* ===== LEAD MAGNET + CALL ===== */
+.lead-section{padding:100px 40px;background:linear-gradient(135deg,var(--bg-alt) 0%,var(--bg) 100%)}
+.lead-container{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.lead-card{background:white;border-radius:24px;padding:40px 32px;border:1px solid var(--border);position:relative;overflow:hidden;transition:all .35s cubic-bezier(.16,1,.3,1)}
+.lead-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px -12px rgba(79,70,229,.18)}
+.lead-card.lead-guide{background:linear-gradient(135deg,#FFFFFF 0%,#FFF7ED 100%);border-color:var(--accent-light)}
+.lead-card.lead-call{background:linear-gradient(135deg,#FFFFFF 0%,#EEF2FF 100%);border-color:var(--primary-light)}
+.lead-card::before{content:'';position:absolute;top:-80px;right:-80px;width:200px;height:200px;border-radius:50%;opacity:.08}
+.lead-card.lead-guide::before{background:var(--accent)}
+.lead-card.lead-call::before{background:var(--primary)}
+.lead-tag{display:inline-block;padding:6px 14px;border-radius:50px;font-size:12px;font-weight:700;margin-bottom:14px;letter-spacing:.02em}
+.lead-guide .lead-tag{background:rgba(249,115,22,.12);color:var(--accent-dark)}
+.lead-call .lead-tag{background:rgba(79,70,229,.12);color:var(--primary)}
+.lead-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:800;margin-bottom:12px;letter-spacing:-.02em;position:relative;z-index:1}
+.lead-card p{font-size:14px;color:var(--text-light);line-height:1.65;margin-bottom:24px;position:relative;z-index:1}
+.lead-card .btn-primary{width:100%;justify-content:center;font-size:14px}
+.lead-card.lead-call .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));box-shadow:0 6px 20px rgba(79,70,229,.35)}
+.lead-card.lead-call .btn-primary:hover{box-shadow:0 10px 30px rgba(79,70,229,.45)}
+.lead-meta{margin-top:14px;text-align:center;font-size:12px;color:var(--text-lighter);font-weight:500}
+
+/* FAQ */
+.faq{background:white;padding:100px 40px}
+.faq-grid{max-width:760px;margin:auto}
+.faq-item{background:var(--bg);border-radius:var(--radius-sm);margin-bottom:12px;border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:all .2s}
+.faq-item:hover{border-color:var(--primary-light)}
+.faq-q{padding:20px 24px;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:15px}
+.faq-q .arrow{color:var(--primary);font-size:20px;transition:transform .3s}
+.faq-item.open .arrow{transform:rotate(180deg)}
+.faq-a{padding:0 24px 20px;font-size:14px;color:var(--text-light);line-height:1.7;display:none}
+.faq-item.open .faq-a{display:block}
+
+/* FINAL CTA */
+.final-cta{background:linear-gradient(135deg,var(--primary-dark),var(--primary));padding:80px 40px;text-align:center;color:white}
+.final-cta h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:40px;font-weight:800;margin-bottom:12px}
+.final-cta p{font-size:17px;opacity:.85;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+.btn-white{background:white;color:var(--primary);border:none;padding:16px 36px;border-radius:50px;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.15);transition:all .3s}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.final-trust{display:flex;justify-content:center;gap:32px;margin-top:28px;font-size:13px;opacity:.8;flex-wrap:wrap}
+
+/* STICKY BAR */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid var(--border);padding:12px 40px;display:flex;align-items:center;justify-content:center;gap:20px;z-index:100;box-shadow:0 -4px 20px rgba(0,0,0,.08);transform:translateY(100%);transition:transform .4s ease}
+.sticky-bar.visible{transform:translateY(0)}
+.sticky-bar .sticky-text{font-size:14px;color:var(--text-light)}
+.sticky-bar .sticky-text strong{color:var(--text)}
+.sticky-bar .sticky-price{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;color:var(--success);font-size:18px}
+
+/* FOOTER */
+footer{background:var(--text);color:white;padding:60px 40px 30px}
+.footer-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-grid h4{font-size:13px;text-transform:uppercase;letter-spacing:1px;opacity:.5;margin-bottom:16px}
+.footer-grid a{display:block;color:rgba(255,255,255,.7);text-decoration:none;font-size:14px;margin-bottom:8px;transition:color .2s}
+.footer-grid a:hover{color:white}
+.footer-brand{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;margin-bottom:12px}
+.footer-brand span{color:var(--accent)}
+.footer-brand-text{font-size:14px;color:rgba(255,255,255,.6);line-height:1.6}
+.footer-bottom{max-width:1100px;margin:auto;border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.4);flex-wrap:wrap;gap:12px}
+
+/* OPTIONS / BOOSTERS SECTION */
+.options-section{padding:100px 40px;background:var(--bg-alt)}
+.options-section .section-header{max-width:1100px;margin-left:auto;margin-right:auto}
+.options-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto}
+
+/* ============= RESPONSIVE ============= */
+
+/* Tablette paysage / iPad landscape (\u2264 1024px) */
+@media(max-width:1024px){
+  nav{padding:0 28px}
+  nav.scrolled{padding:0 24px}
+  .hero{padding:60px 28px 50px;gap:40px}
+  .hero h1{font-size:44px}
+  .stats{padding:50px 28px}
+  .vs-section{padding:80px 28px}
+  .cost-timeline{padding:80px 28px}
+  .how{padding:80px 28px}
+  .calculator{padding:80px 28px}
+  .calc-container{padding:40px 32px}
+  .pricing{padding:80px 28px}
+  .options-section{padding:80px 28px}
+  .estimate{padding:70px 28px}
+  .estimate-form{padding:32px}
+  .estimate-result{padding:32px}
+  .est-result-range{font-size:30px}
+  .testimonials{padding:80px 28px}
+  .faq{padding:80px 28px}
+  .final-cta{padding:70px 28px}
+  .nav-links{gap:2px}
+  .nav-links a{padding:8px 12px;font-size:13px}
+  .nav-cta{padding:10px 18px;font-size:13px}
+  .price-card{padding:36px 26px}
+  /* New sections - tablet landscape */
+  .vs-pap{padding:80px 28px}
+  .vs-pap-row{padding:16px 18px;font-size:13px;grid-template-columns:1.8fr 1fr 1fr 1.2fr}
+  .objections{padding:80px 28px}
+  .support-360{padding:80px 28px}
+  .support-grid{gap:18px}
+  .support-card{padding:28px 22px}
+  .network{padding:80px 28px}
+  .network-stats{gap:18px}
+  .net-num{font-size:34px}
+  .benefits-hidden{padding:80px 28px}
+  .benefits-grid{gap:16px}
+  .ben-card{padding:24px 18px}
+  .lead-section{padding:80px 28px}
+  .lead-container{gap:22px}
+  .lead-card{padding:34px 26px}
+}
+
+/* Tablette portrait / iPad portrait (\u2264 900px) */
+@media(max-width:900px){
+  .watermark{padding:8px;font-size:11px;line-height:1.3}
+  nav{top:34px;height:68px;padding:0 20px}
+  nav.scrolled{height:58px;padding:0 18px}
+  .nav-links{display:none}
+  .nav-cta{display:none}
+  .nav-hamburger{display:flex}
+  .nav-logo-mark{width:38px;height:38px;border-radius:10px}
+  .nav-logo-mark svg{width:22px;height:22px}
+  .nav-logo{font-size:19px}
+  .nav-logo-tag{font-size:8px;letter-spacing:.15em}
+  .hero{margin-top:34px;grid-template-columns:1fr;text-align:center;padding:50px 20px 40px;gap:32px}
+  .hero h1{font-size:38px}
+  .hero p{margin:0 auto 32px;font-size:16px}
+  .hero-actions{justify-content:center;flex-wrap:wrap;gap:12px}
+  .hero-actions .btn-primary,.hero-actions .btn-secondary{width:100%;justify-content:center;max-width:340px}
+  .hero-proof{justify-content:center;flex-wrap:wrap;gap:16px}
+  .hero-visual{margin-top:24px;padding:0 12px}
+  .hero-float{display:none}
+  .hero-card{max-width:420px;margin:auto}
+  .stats-grid{grid-template-columns:repeat(2,1fr);gap:24px}
+  .estimate{padding:60px 20px}
+  .estimate-card{grid-template-columns:1fr;border-radius:22px}
+  .estimate-form{padding:26px 22px}
+  .estimate-result{padding:30px 22px;border-top:1px solid rgba(255,255,255,.08)}
+  .est-result-range{font-size:28px}
+  .est-toggle-btn{font-size:13px;padding:11px 8px}
+  .est-piece-btn{padding:10px 0;font-size:13px}
+  .section-header h2{font-size:32px}
+  .section-header p{font-size:15px}
+  .steps-grid{grid-template-columns:repeat(2,1fr)}
+  .step-arrow{display:none}
+  .vs-grid{grid-template-columns:1fr;gap:16px}
+  .vs-middle{padding:8px 0}
+  .vs-badge{width:48px;height:48px;font-size:15px}
+  .timeline-visual{padding:28px 20px}
+  .timeline-row{grid-template-columns:80px 1fr 110px;gap:12px}
+  .calc-container{padding:32px 22px}
+  .calc-container h2{font-size:28px}
+  .calc-result{padding:24px}
+  .calc-result .big{font-size:38px}
+  .calc-comparison{flex-direction:column;gap:10px}
+  .calc-comparison div{width:100%}
+  .quiz-section{padding:70px 20px}
+  .quiz-card{padding:32px 22px}
+  .pricing-grid{grid-template-columns:1fr;gap:24px}
+  .price-card.featured{transform:none;margin-top:8px}
+  .options-grid{grid-template-columns:1fr;gap:20px;max-width:480px}
+  .testimonials-grid{grid-template-columns:1fr;gap:20px}
+  .trust-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+  .live-feed{padding:70px 20px}
+  .feed-header-wrap h2{font-size:26px}
+  .feed-stats{grid-template-columns:repeat(2,1fr);gap:14px;padding:18px}
+  .feed-stat:nth-child(2)::after{display:none}
+  .feed-stat:nth-child(1),.feed-stat:nth-child(2){border-bottom:1px solid var(--border);padding-bottom:14px}
+  .feed-stat:nth-child(3),.feed-stat:nth-child(4){padding-top:14px}
+  .feed-stat-num{font-size:22px}
+  .feed-item{min-width:280px;max-width:280px}
+  .feed-track{animation-duration:50s}
+  .faq-q{padding:18px 20px;font-size:14px}
+  .faq-a{padding:0 20px 18px;font-size:14px}
+  .final-cta h2{font-size:32px}
+  .final-cta p{font-size:15px}
+  .final-trust{gap:18px;font-size:12px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .sticky-bar{padding:10px 16px;gap:10px}
+  .sticky-bar .sticky-text{display:none}
+  .sticky-bar .sticky-price{font-size:16px;flex-shrink:0}
+  .sticky-bar .btn-primary{padding:10px 18px;font-size:13px;white-space:nowrap}
+  /* New sections - tablet portrait */
+  .vs-pap{padding:70px 20px}
+  .vs-pap-table{border-radius:18px}
+  .vs-pap-row{padding:14px 14px;font-size:12.5px;grid-template-columns:1.6fr .9fr .9fr 1.1fr;gap:6px}
+  .vs-pap-row.vs-pap-header{font-size:10.5px;padding:14px}
+  .vs-pap-row > div:not(:first-child):not(.vs-pap-us){font-size:15px}
+  .vs-pap-us{font-size:12px;padding:6px 8px}
+  .objections{padding:70px 20px}
+  .obj-grid{grid-template-columns:1fr;gap:14px}
+  .obj-card{padding:24px 20px}
+  .obj-fear{font-size:14px}
+  .obj-answer{font-size:13.5px}
+  .support-360{padding:70px 20px}
+  .support-grid{grid-template-columns:1fr;gap:16px;max-width:520px;margin:auto}
+  .support-card{padding:26px 22px}
+  .network{padding:70px 20px}
+  .network-stats{grid-template-columns:repeat(2,1fr);gap:14px}
+  .net-stat{padding:22px 12px}
+  .net-num{font-size:30px}
+  .net-lbl{font-size:12px}
+  .net-coverage{font-size:13px;padding:14px 18px}
+  .benefits-hidden{padding:70px 20px}
+  .benefits-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .ben-card{padding:22px 18px}
+  .ben-icon{font-size:30px}
+  .lead-section{padding:70px 20px}
+  .lead-container{grid-template-columns:1fr;gap:18px;max-width:520px;margin:auto}
+  .lead-card{padding:30px 24px}
+  .lead-card h3{font-size:22px}
+}
+
+/* Mobile (\u2264 600px) */
+@media(max-width:600px){
+  .watermark{font-size:10px;padding:7px 6px}
+  nav{top:30px;height:62px;padding:0 14px}
+  nav.scrolled{height:54px;padding:0 12px}
+  .nav-inner{gap:8px}
+  .nav-logo-mark{width:36px;height:36px}
+  .nav-logo-mark svg{width:20px;height:20px}
+  .nav-logo{font-size:17px}
+  .nav-logo-tag{display:none}
+  .nav-cta{padding:8px 12px;font-size:11px;font-weight:600}
+  .hero{margin-top:30px;padding:36px 18px 32px}
+  .hero h1{font-size:30px;line-height:1.15}
+  .hero p{font-size:15px}
+  .hero-badge{font-size:11px;padding:5px 12px}
+  .btn-primary{padding:14px 22px;font-size:14px}
+  .btn-secondary{padding:12px 22px;font-size:14px}
+  .hero-card{padding:22px}
+  .savings-display .amount{font-size:36px !important}
+  .estimate{padding:50px 14px}
+  .estimate-form,.estimate-result{padding:22px 18px}
+  .est-result-range{font-size:24px;gap:6px}
+  .est-result-range .est-dash{display:none}
+  .est-pieces{grid-template-columns:repeat(5,1fr);gap:4px}
+  .est-piece-btn{padding:9px 0;font-size:12px}
+  .estimate-header h2{font-size:24px}
+  .estimate-header p{font-size:14px}
+  .stats{padding:40px 18px}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:18px}
+  .stat-number{font-size:28px}
+  .stat-label{font-size:12px}
+  .section-header{margin-bottom:36px}
+  .section-header h2{font-size:26px}
+  .section-tag{font-size:12px}
+  .vs-section{padding:60px 18px}
+  .vs-card{padding:28px 22px}
+  .vs-card h3{font-size:18px}
+  .vs-list li{font-size:13px;padding:8px 0}
+  .vs-card .price-amount{font-size:30px}
+  .cost-timeline{padding:60px 18px}
+  .timeline-visual{padding:20px 14px;border-radius:18px}
+  .timeline-row{grid-template-columns:54px 1fr 86px;gap:8px;font-size:12px}
+  .timeline-row.header{font-size:10px}
+  .timeline-month{font-size:13px}
+  .timeline-bar{font-size:10px;padding:0 8px}
+  .timeline-cumul .bba-cost{font-size:14px}
+  .timeline-cumul .agency-cost{font-size:11px}
+  .timeline-bottom{flex-direction:column;gap:12px;text-align:center;padding:18px}
+  .timeline-bottom div{text-align:center !important}
+  .timeline-bottom .tb-value{font-size:20px}
+  .how{padding:60px 18px}
+  .steps-grid{grid-template-columns:1fr;gap:16px}
+  .step-card{padding:24px 20px}
+  .calculator{padding:60px 14px}
+  .calc-container{padding:26px 18px;border-radius:18px}
+  .calc-container h2{font-size:24px}
+  .calc-container .sub{font-size:14px}
+  .calc-value strong{font-size:22px}
+  .calc-result .big{font-size:32px}
+  .quiz-section{padding:60px 14px}
+  .quiz-card{padding:26px 18px;border-radius:18px}
+  .quiz-card h2{font-size:22px}
+  .quiz-question{font-size:16px;min-height:auto;margin-bottom:20px}
+  .quiz-option{padding:14px 16px;font-size:14px}
+  .pricing{padding:60px 14px}
+  .price-card{padding:30px 22px;border-radius:20px}
+  .price-card .price{font-size:38px}
+  .price-features li{font-size:13px}
+  .options-section{padding:50px 14px}
+  .portals{padding:50px 18px}
+  .portal-logo{padding:10px 16px;font-size:12px}
+  .live-feed{padding:50px 14px}
+  .feed-header-wrap h2{font-size:24px}
+  .feed-header-wrap p{font-size:13px}
+  .feed-stats{grid-template-columns:1fr 1fr;gap:8px;padding:14px;border-radius:14px}
+  .feed-stat:not(:last-child)::after{display:none}
+  .feed-stat:nth-child(odd){border-right:1px solid var(--border)}
+  .feed-stat:nth-child(1),.feed-stat:nth-child(2){border-bottom:1px solid var(--border);padding-bottom:12px}
+  .feed-stat:nth-child(3),.feed-stat:nth-child(4){padding-top:12px}
+  .feed-stat-num{font-size:20px}
+  .feed-stat-lbl{font-size:10px}
+  .feed-item{min-width:260px;max-width:260px;padding:14px}
+  .feed-detail{font-size:13px}
+  .feed-meta{font-size:11px}
+  .feed-track{animation-duration:45s}
+  .testimonials{padding:60px 18px}
+  .testimonial-card{padding:24px 22px}
+  .testimonial-text{font-size:14px}
+  .trust{padding:50px 14px}
+  .trust-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .trust-item{padding:18px 8px}
+  .trust-icon{font-size:22px}
+  .trust-label{font-size:12px}
+  .trust-sub{font-size:10px}
+  .faq{padding:60px 14px}
+  .faq-q{padding:16px;font-size:13px;gap:12px}
+  .faq-a{padding:0 16px 16px;font-size:13px}
+  .final-cta{padding:60px 18px}
+  .final-cta h2{font-size:26px}
+  .final-cta p{font-size:14px}
+  .btn-white{padding:14px 26px;font-size:14px;width:100%;max-width:320px}
+  .final-trust{flex-direction:column;gap:8px;align-items:center}
+  .sticky-bar{padding:10px 12px;gap:8px;justify-content:space-between}
+  .sticky-bar .sticky-price{font-size:14px}
+  .sticky-bar .btn-primary{padding:9px 14px;font-size:12px}
+  footer{padding:50px 18px 24px}
+  .footer-grid{grid-template-columns:1fr;gap:24px;margin-bottom:28px}
+  .footer-bottom{flex-direction:column;text-align:center;font-size:12px}
+  /* New sections - mobile */
+  .vs-pap{padding:50px 14px}
+  .vs-pap-table{border-radius:14px}
+  .vs-pap-row{grid-template-columns:1.5fr .8fr .8fr 1fr;padding:12px 10px;font-size:11px;gap:4px}
+  .vs-pap-row.vs-pap-header{font-size:9.5px;padding:12px 10px;letter-spacing:.04em}
+  .vs-pap-row > div:first-child{font-size:12px}
+  .vs-pap-row > div:not(:first-child):not(.vs-pap-us){font-size:13px}
+  .vs-pap-us{font-size:11px;padding:4px 6px;border-radius:6px}
+  .vs-pap-cta{margin-top:24px}
+  .objections{padding:50px 14px}
+  .obj-card{padding:22px 18px;border-radius:14px}
+  .obj-fear{font-size:13.5px;padding:6px 0 6px 12px}
+  .obj-answer{font-size:13px;padding-left:12px}
+  .support-360{padding:50px 14px}
+  .support-card{padding:22px 18px;border-radius:16px}
+  .support-icon{width:52px;height:52px;font-size:24px;border-radius:14px}
+  .support-card h3{font-size:16px}
+  .support-card ul li{font-size:13px}
+  .network{padding:50px 14px}
+  .net-stat{padding:18px 10px;border-radius:14px}
+  .net-num{font-size:26px}
+  .net-lbl{font-size:11px}
+  .net-coverage{font-size:12px;padding:12px 14px;line-height:1.5}
+  .benefits-hidden{padding:50px 14px}
+  .benefits-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .ben-card{padding:18px 14px;border-radius:14px}
+  .ben-icon{font-size:26px;margin-bottom:10px}
+  .ben-card h3{font-size:14px;margin-bottom:6px}
+  .ben-card p{font-size:12px;line-height:1.5}
+  .lead-section{padding:50px 14px}
+  .lead-card{padding:26px 20px;border-radius:18px}
+  .lead-card h3{font-size:19px;margin-bottom:10px}
+  .lead-card p{font-size:13px;margin-bottom:18px}
+  .lead-tag{font-size:11px;padding:5px 12px}
+  .lead-meta{font-size:11px}
+}
+
+/* Tr\u00e8s petit mobile (\u2264 380px) */
+@media(max-width:380px){
+  .nav-logo{font-size:15px}
+  .nav-cta{padding:7px 10px;font-size:10px}
+  .hero h1{font-size:26px}
+  .hero-proof{font-size:12px;gap:12px}
+  .stat-number{font-size:24px}
+  .section-header h2{font-size:22px}
+  .price-card .price{font-size:32px}
+  .calc-result .big{font-size:28px}
+  .final-cta h2{font-size:22px}
+  .vs-pap-row{grid-template-columns:1.5fr .7fr .7fr .9fr;font-size:10px}
+  .vs-pap-us{font-size:10px;padding:3px 4px}
+  .net-num{font-size:22px}
+  .lead-card h3{font-size:17px}
+  .ben-card h3{font-size:13px}
+}
+</style>
+
+<!-- ====================================================================
+     SEO META + SOCIAL
+     ==================================================================== -->
+<meta name="description" content="Vendez votre bien immobilier sans commission d'agence. Diffusion sur 30+ portails pros (SeLoger, Bien'ici, Logic-Immo) dès 190€/mois, sans engagement. Économie moyenne 14 000€.">
+<meta name="keywords" content="vente immobilière sans agence, PAP, particulier à particulier, SeLoger, Bien'ici, Logic-Immo, sans commission, vendre appartement, vendre maison, ByeByeAgent, Ark France">
+<meta name="author" content="Ark France">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://byebyeagent.fr/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="ByeByeAgent">
+<meta property="og:title" content="ByeByeAgent — Vendez votre bien sans commission">
+<meta property="og:description" content="Diffusion 30+ portails pros, IA & coach inclus. Dès 190€/mois, sans engagement. Économie moyenne 14 000€.">
+<meta property="og:url" content="https://byebyeagent.fr/">
+<meta property="og:image" content="https://byebyeagent.fr/og-image.png">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ByeByeAgent — Vendez sans commission">
+<meta name="twitter:description" content="Diffusion 30+ portails pros, IA & coach inclus. Dès 190€/mois.">
+
+<!-- ====================================================================
+     SCHEMA.ORG JSON-LD — pour SEO + IA (ChatGPT, Claude, Perplexity, Gemini)
+     ==================================================================== -->
+
+<!-- Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://byebyeagent.fr/#organization",
+  "name": "ByeByeAgent",
+  "alternateName": "Ark France",
+  "url": "https://byebyeagent.fr",
+  "logo": "https://byebyeagent.fr/logo.png",
+  "description": "Service français de vente immobilière sans commission d'agence. Diffusion sur 30+ portails pros (SeLoger, Bien'ici, Logic-Immo) à partir de 190 €/mois.",
+  "foundingDate": "2024",
+  "parentOrganization": { "@type": "Organization", "name": "Ark France" },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+33-1-23-45-67-89",
+    "contactType": "customer support",
+    "areaServed": "FR",
+    "availableLanguage": "French",
+    "email": "contact@byebyeagent.fr"
+  },
+  "address": { "@type": "PostalAddress", "addressCountry": "FR" },
+  "sameAs": [
+    "https://www.linkedin.com/company/byebyeagent",
+    "https://twitter.com/byebyeagent"
+  ]
+}
+</script>
+
+<!-- WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://byebyeagent.fr/#website",
+  "url": "https://byebyeagent.fr",
+  "name": "ByeByeAgent",
+  "publisher": { "@id": "https://byebyeagent.fr/#organization" },
+  "inLanguage": "fr-FR"
+}
+</script>
+
+<!-- Service (la prestation principale + tarifs + note moyenne) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://byebyeagent.fr/#service",
+  "serviceType": "Vente immobilière entre particuliers (PAP)",
+  "provider": { "@id": "https://byebyeagent.fr/#organization" },
+  "areaServed": { "@type": "Country", "name": "France" },
+  "description": "ByeByeAgent permet aux propriétaires de vendre leur bien en accédant aux mêmes portails que les agences (SeLoger, Bien'ici, Logic-Immo) sans commission. Tarif fixe à partir de 190€/mois, sans engagement.",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Pack Essentiel",
+      "price": "190",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "190",
+        "priceCurrency": "EUR",
+        "billingDuration": "P1M"
+      },
+      "description": "Diffusion 30+ portails pro, rédaction IA, guide PAP, 5 boosts plateforme."
+    },
+    {
+      "@type": "Offer",
+      "name": "Pack Coaching",
+      "price": "290",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "290",
+        "priceCurrency": "EUR",
+        "billingDuration": "P1M"
+      },
+      "description": "Tout l'Essentiel + 2 RDV/mois avec coach dédié + estimation pro + pré-qualification acheteurs + suivi notaire."
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "127",
+    "reviewCount": "127"
+  }
+}
+</script>
+
+<!-- FAQ Page (les vraies questions de la section FAQ + objections) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Pourquoi payer un abonnement mensuel plutôt qu'un forfait unique ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pas d'engagement, pas de gros montant d'un coup. Vous ne payez que tant que votre annonce est en ligne. Dès que vous vendez, vous résiliez en 1 clic. Et même après 6 mois d'abonnement, vous économisez encore plus de 12 000 € par rapport à une agence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mon bien sera-t-il vraiment sur SeLoger et les portails pro ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, dès les premières 24h. Votre annonce apparaît sur SeLoger, Bien'ici, Logic-Immo et +27 autres portails — exactement les mêmes que ceux utilisés par les agences immobilières. C'est notre partenariat professionnel qui le permet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quelle est la différence avec LeBonCoin ou PAP ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sur LeBonCoin, votre annonce est noyée parmi des milliers d'autres et vous n'avez accès qu'à un seul site. Avec ByeByeAgent, vous êtes présent sur +30 portails professionnels simultanément (dont SeLoger, réservé aux pros), avec une annonce optimisée par IA et un coach qui vous accompagne."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Je peux vraiment résilier à tout moment ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, zéro engagement. Vous résiliez en 1 clic depuis votre espace propriétaire, sans justification. Si vous vendez en 3 semaines, vous ne payez qu'un seul mois."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qui m'accompagne pendant la vente ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Avec le Pack Coaching, un expert immobilier dédié vous accompagne 6j/7 : estimation du bien, rédaction d'annonce, préparation des visites, coaching négociation, et suivi jusqu'à la signature chez le notaire."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Est-ce légal de vendre sans agent immobilier ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolument. La vente entre particuliers est encadrée par la loi en France. Le notaire (obligatoire) sécurise la transaction. ByeByeAgent vous donne simplement les outils professionnels pour maximiser votre visibilité et vendre dans les meilleures conditions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Et si mon bien ne se vend pas ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Vous pouvez résilier à tout moment sans frais. Si vous n'êtes pas satisfait dès le premier mois, nous vous remboursons. Et votre coach est là pour ajuster la stratégie (prix, annonce, photos) afin d'accélérer la vente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Combien coûte la vente d'un bien immobilier avec ByeByeAgent vs une agence ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Avec une agence traditionnelle, vous payez une commission de 4 à 8% du prix de vente (soit 12 000 à 24 000 € pour un bien à 300 000 €). Avec ByeByeAgent, vous payez un abonnement mensuel fixe de 190 € ou 290 €, soit environ 580 € au total pour une vente moyenne de 2 mois. Économie moyenne : 14 000 €."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Les acheteurs ne me prendront pas au sérieux sans agence ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Faux. Sur SeLoger, Bien'ici et les portails pros, votre annonce apparaît exactement comme celle d'une agence. 73% des acheteurs nous contactent sans savoir que c'est en direct."
+      }
+    }
+  ]
+}
+</script>
+
+</head>
+<body>
+
+<!-- WATERMARK -->
+<div class="watermark">
+  <span>MAQUETTE V2 — ByeByeAgent — Optimis&eacute;e Conversion — Ark France — Mai 2026</span>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <div class="nav-logo-mark" aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Maison stylis\u00e9e + check (sans agent) -->
+        <defs>
+          <linearGradient id="logoHouseGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#F8FAFC"/>
+          </linearGradient>
+        </defs>
+        <!-- Toit accentué orange -->
+        <path d="M3 15.8L16 4l13 11.8" stroke="#F97316" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <!-- Corps maison -->
+        <path d="M5.5 15.2L16 6l10.5 9.2v11.2a1.8 1.8 0 0 1-1.8 1.8H7.3a1.8 1.8 0 0 1-1.8-1.8V15.2z" fill="url(#logoHouseGrad)"/>
+        <!-- Check de vente conclue -->
+        <path d="M10.5 18.6l3.6 3.6 7.6-8" stroke="#F97316" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="nav-logo">
+      <div class="nav-logo-text"><span class="word-bye">ByeBye</span><span class="word-agent">Agent</span></div>
+      <div class="nav-logo-tag">By Ark France</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#estimate">Estimation</a>
+    <a href="#how">Comment &ccedil;a marche</a>
+    <a href="#pricing">Formules</a>
+    <a href="#ressources">Ressources</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})">Tester mon profil vendeur &rarr;</button>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-drawer-backdrop" id="drawerBackdrop"></div>
+  <div class="mobile-drawer-panel">
+    <div class="drawer-header">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="nav-logo-mark" style="width:34px;height:34px;border-radius:9px" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px">
+            <path d="M4 15.5L16 5l12 10.5V27a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V15.5z" fill="white" fill-opacity=".96"/>
+            <path d="M13 21l2.2 2.2L20 18.5" stroke="#F97316" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">ByeByeAgent</span>
+      </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Fermer">&times;</button>
+    </div>
+    <div class="drawer-links">
+      <a href="#estimate" onclick="closeDrawer()">📊 Estimation gratuite</a>
+      <a href="#how" onclick="closeDrawer()">💡 Comment ça marche</a>
+      <a href="#pricing" onclick="closeDrawer()">💰 Nos formules</a>
+      <a href="#ressources" onclick="closeDrawer()">📚 Ressources</a>
+      <a href="#faq" onclick="closeDrawer()">❓ FAQ</a>
+    </div>
+    <button class="drawer-cta" onclick="closeDrawer();goToApp()">Déposer mon annonce — dès 190€/mois →</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">+ de 200 biens vendus sans commission</div>
+    <h1>
+      Vendez votre bien<br>
+      <span class="highlight">comme un pro</span><br>
+      d&egrave;s 190&euro;/mois
+    </h1>
+    <p>Acc&eacute;dez aux m&ecirc;mes portails que les agences (SeLoger, Bien'ici, Logic-Immo&hellip;) et gardez <strong>100% du prix de vente</strong>. Z&eacute;ro commission. Z&eacute;ro surprise.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.getElementById('estimate').scrollIntoView({behavior:'smooth'})">
+        &#127968; Estimer mon bien gratuitement
+      </button>
+      <button class="btn-secondary" onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'})">Calculer mes &eacute;conomies</button>
+    </div>
+    <div class="hero-proof">
+      <div class="hero-proof-item"><strong>97%</strong> satisfaits</div>
+      <div class="hero-proof-item"><strong>31j</strong> d&eacute;lai moyen</div>
+      <div class="hero-proof-item"><strong>30+</strong> portails pro</div>
+      <div class="hero-proof-item"><strong>Sans</strong> engagement</div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <h3>&#128200; Simulateur en direct</h3>
+        <div class="hero-card-badge">Bien &agrave; 285 000&euro;</div>
+      </div>
+      <div class="savings-display">
+        <div class="label">Avec une agence, vous perdriez</div>
+        <div class="amount" style="color:var(--danger);font-size:46px;text-decoration:line-through;">14 250 &euro;</div>
+      </div>
+      <div class="savings-bar">
+        <div class="savings-bar-item agency">
+          <div class="bar-label">Agence (5%)</div>
+          <div class="bar-value">14 250 &euro;</div>
+        </div>
+        <div class="savings-bar-item us">
+          <div class="bar-label">ByeByeAgent (~2 mois)</div>
+          <div class="bar-value">580 &euro;</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-float top-right">
+      <div class="float-icon green">&#127968;</div>
+      <div>
+        <div style="font-size:11px;color:var(--text-light);">Vendu hier</div>
+        <div style="font-size:14px;font-weight:700;">T3 Lyon 7e &mdash; 23 jours</div>
+      </div>
+    </div>
+    <div class="hero-float bottom-left">
+      <div class="float-icon blue">&#128176;</div>
+      <div>
+        <div style="font-size:11px;color:var(--text-light);">&Eacute;conomie r&eacute;alis&eacute;e</div>
+        <div style="font-size:14px;font-weight:700;color:var(--success);">+ 13 670 &euro; gard&eacute;s</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ESTIMATION GRATUITE ===== -->
+<section class="estimate" id="estimate">
+  <div class="estimate-container">
+    <div class="estimate-header">
+      <div class="section-tag">&#10024; Estimation gratuite &amp; instantan&eacute;e</div>
+      <h2>Combien vaut <span class="highlight">votre bien</span> aujourd'hui&nbsp;?</h2>
+      <p>Obtenez une fourchette de prix en 30 secondes, bas&eacute;e sur les ventes r&eacute;centes du secteur.</p>
+    </div>
+    <div class="estimate-card">
+      <div class="estimate-form">
+        <div class="est-row">
+          <label>Type de bien</label>
+          <div class="est-toggle" id="estType">
+            <button type="button" class="est-toggle-btn active" data-type="apt">&#127970; Appartement</button>
+            <button type="button" class="est-toggle-btn" data-type="house">&#127969; Maison</button>
+          </div>
+        </div>
+        <div class="est-row">
+          <label for="estCity">Ville ou code postal</label>
+          <input class="est-input" type="text" id="estCity" placeholder="Ex&nbsp;: Lyon, Paris 15, 75015&hellip;" autocomplete="off">
+        </div>
+        <div class="est-row">
+          <label>Surface&nbsp;: <strong id="estSurfaceVal">75 m&sup2;</strong></label>
+          <input class="est-slider" type="range" id="estSurface" min="15" max="300" step="5" value="75">
+        </div>
+        <div class="est-row">
+          <label>Nombre de pi&egrave;ces</label>
+          <div class="est-pieces" id="estPieces">
+            <button type="button" class="est-piece-btn" data-piece="1">1</button>
+            <button type="button" class="est-piece-btn" data-piece="2">2</button>
+            <button type="button" class="est-piece-btn active" data-piece="3">3</button>
+            <button type="button" class="est-piece-btn" data-piece="4">4</button>
+            <button type="button" class="est-piece-btn" data-piece="5">5+</button>
+          </div>
+        </div>
+        <div class="est-row">
+          <label for="estCondition">&Eacute;tat g&eacute;n&eacute;ral</label>
+          <select class="est-select" id="estCondition">
+            <option value="renov">&Agrave; r&eacute;nover</option>
+            <option value="good" selected>Bon &eacute;tat</option>
+            <option value="very-good">Tr&egrave;s bon &eacute;tat</option>
+            <option value="new">Neuf / r&eacute;nov&eacute;</option>
+          </select>
+        </div>
+      </div>
+      <div class="estimate-result">
+        <div class="est-result-label">Estimation de votre bien</div>
+        <div class="est-result-range">
+          <span id="estLow">250&nbsp;000 &euro;</span>
+          <span class="est-dash">&mdash;</span>
+          <span id="estHigh">295&nbsp;000 &euro;</span>
+        </div>
+        <div class="est-result-avg">Prix m&eacute;dian estim&eacute;&nbsp;: <strong id="estAvg">272&nbsp;500 &euro;</strong> <span id="estCityLabel" style="opacity:.7"></span></div>
+        <div class="est-result-meter"><div class="est-meter-bar" id="estMeterBar"></div></div>
+        <div class="est-result-bottom">
+          <div class="est-savings-tip">
+            &#128176; En vendant <strong>en direct (PAP)</strong>, vous &eacute;conomisez environ <strong id="estCommission">~13 625 &euro;</strong> de commission d'agence.
+          </div>
+          <button class="btn-primary est-cta" onclick="goToApp()">Recevoir mon estimation d&eacute;taill&eacute;e par email &rarr;</button>
+          <div class="est-disclaimer">&#128202; Estimation indicative bas&eacute;e sur les prix m&eacute;dians du secteur. Pour une expertise pr&eacute;cise et personnalis&eacute;e, votre estimation pro est <strong style="color:#FBBF24">offerte</strong> avec le Pack Coaching.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">14 000 &euro;</div>
+      <div class="stat-label">&Eacute;conomie moyenne par vente</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">31 jours</div>
+      <div class="stat-label">D&eacute;lai moyen de vente</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">0 &euro;</div>
+      <div class="stat-label">Commission pay&eacute;e &agrave; un agent</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">Sans</div>
+      <div class="stat-label">Engagement &mdash; r&eacute;siliable &agrave; tout moment</div>
+    </div>
+  </div>
+</section>
+
+<!-- VS COMPARISON -->
+<section class="vs-section" id="vs">
+  <div class="section-header">
+    <div class="section-tag">Le vrai comparatif</div>
+    <h2>Agence traditionnelle vs ByeByeAgent</h2>
+    <p>La m&ecirc;me visibilit&eacute;, le m&ecirc;me accompagnement, sans la commission</p>
+  </div>
+  <div class="vs-grid">
+    <div class="vs-card agency">
+      <h3>&#128308; Agence classique</h3>
+      <div class="vs-subtitle">Le mod&egrave;le qu'on conna&icirc;t tous</div>
+      <ul class="vs-list">
+        <li><span class="icon">&times;</span> Commission de 4 &agrave; 8% du prix de vente</li>
+        <li><span class="icon">&times;</span> Mandat exclusif de 3 mois minimum</li>
+        <li><span class="icon">&times;</span> L'agent g&egrave;re tout&hellip; selon sa charge de travail</li>
+        <li><span class="icon">&times;</span> Vous d&eacute;pendez de la motivation d'un seul agent</li>
+        <li><span class="icon">&times;</span> Photos standard (smartphone de l'agent)</li>
+        <li><span class="icon">&times;</span> Aucun contr&ocirc;le sur le calendrier des visites</li>
+        <li><span class="icon">&times;</span> N&eacute;gociation souvent &agrave; la baisse pour vendre vite</li>
+      </ul>
+      <div class="vs-price">
+        <div class="price-label">Co&ucirc;t pour un bien &agrave; 300 000&euro;</div>
+        <div class="price-amount">15 000 &euro;</div>
+      </div>
+    </div>
+    <div class="vs-middle">
+      <div class="vs-badge">VS</div>
+    </div>
+    <div class="vs-card bba">
+      <h3>&#128994; ByeByeAgent</h3>
+      <div class="vs-subtitle">La nouvelle fa&ccedil;on de vendre</div>
+      <ul class="vs-list">
+        <li><span class="icon">&#10003;</span> Abonnement fixe de 190 ou 290&euro;/mois. Point.</li>
+        <li><span class="icon">&#10003;</span> <strong>Sans engagement</strong> &mdash; r&eacute;siliable &agrave; tout moment</li>
+        <li><span class="icon">&#10003;</span> Vous gardez le contr&ocirc;le, avec un coach d&eacute;di&eacute;</li>
+        <li><span class="icon">&#10003;</span> +30 portails pro (SeLoger, Bien'ici, Logic-Immo&hellip;)</li>
+        <li><span class="icon">&#10003;</span> IA pour r&eacute;diger et optimiser votre annonce</li>
+        <li><span class="icon">&#10003;</span> Vous choisissez vos visites, votre rythme</li>
+        <li><span class="icon">&#10003;</span> Coach n&eacute;gociation pour vendre au meilleur prix</li>
+      </ul>
+      <div class="vs-price">
+        <div class="price-label">Co&ucirc;t pour une vente en ~2 mois</div>
+        <div class="price-amount">580 &euro;</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VS AUTRES SOLUTIONS PAP -->
+<section class="vs-pap" id="vs-pap">
+  <div class="section-header">
+    <div class="section-tag">&#127919; Pour les vendeurs en direct</div>
+    <h2>Et face aux <span style="background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">autres solutions PAP</span>&nbsp;?</h2>
+    <p>Une annonce gratuite n'est pas une vente professionnelle. Voici la vraie diff&eacute;rence.</p>
+  </div>
+  <div class="vs-pap-table">
+    <div class="vs-pap-row vs-pap-header">
+      <div>Crit&egrave;re</div>
+      <div>Leboncoin</div>
+      <div>PAP.fr</div>
+      <div class="vs-pap-us">ByeByeAgent</div>
+    </div>
+    <div class="vs-pap-row">
+      <div>Diffusion SeLoger / Bien'ici / Logic-Immo</div>
+      <div>&#10006;</div>
+      <div>&#10006;</div>
+      <div class="vs-pap-us">&#10003; 30+ portails pro</div>
+    </div>
+    <div class="vs-pap-row">
+      <div>Annonce optimis&eacute;e par IA</div>
+      <div>&#10006;</div>
+      <div>&#10006;</div>
+      <div class="vs-pap-us">&#10003; Incluse</div>
+    </div>
+    <div class="vs-pap-row">
+      <div>Coach immobilier d&eacute;di&eacute;</div>
+      <div>&#10006;</div>
+      <div>&#10006;</div>
+      <div class="vs-pap-us">&#10003; Inclus en Coaching</div>
+    </div>
+    <div class="vs-pap-row">
+      <div>V&eacute;rification solvabilit&eacute; acheteur</div>
+      <div>&#10006;</div>
+      <div>&#10006;</div>
+      <div class="vs-pap-us">&#10003; Incluse</div>
+    </div>
+    <div class="vs-pap-row">
+      <div>Accompagnement notaire jusqu'&agrave; signature</div>
+      <div>&#10006;</div>
+      <div>&#10006;</div>
+      <div class="vs-pap-us">&#10003; Incluse</div>
+    </div>
+    <div class="vs-pap-row">
+      <div>Mod&egrave;le tarifaire</div>
+      <div>Variable</div>
+      <div>~600&euro; forfait</div>
+      <div class="vs-pap-us">D&egrave;s 190&euro;/mois r&eacute;siliable</div>
+    </div>
+  </div>
+</section>
+
+<!-- COST TIMELINE -->
+<section class="cost-timeline">
+  <div class="timeline-container">
+    <div class="section-header">
+      <div class="section-tag">Transparence totale</div>
+      <h2>Et si &ccedil;a prend plus de temps ?</h2>
+      <p>M&ecirc;me au bout de 6 mois d'abonnement, vous &eacute;conomisez plus de 13 000&euro; par rapport &agrave; une agence</p>
+    </div>
+    <div class="timeline-visual">
+      <div class="timeline-row header">
+        <div>Dur&eacute;e</div>
+        <div>Co&ucirc;t cumul&eacute; (Pack Coaching)</div>
+        <div style="text-align:right">Comparatif</div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-month">1 mois</div>
+        <div class="timeline-bar-container">
+          <div class="timeline-bar bba" style="width:4%;">290&euro;</div>
+          <div class="timeline-bar agency" style="width:100%;"></div>
+        </div>
+        <div class="timeline-cumul">
+          <div class="bba-cost">290 &euro;</div>
+          <div class="agency-cost">14 250 &euro;</div>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-month">2 mois</div>
+        <div class="timeline-bar-container">
+          <div class="timeline-bar bba" style="width:8%;">580&euro;</div>
+          <div class="timeline-bar agency" style="width:100%;"></div>
+        </div>
+        <div class="timeline-cumul">
+          <div class="bba-cost">580 &euro;</div>
+          <div class="agency-cost">14 250 &euro;</div>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-month">3 mois</div>
+        <div class="timeline-bar-container">
+          <div class="timeline-bar bba" style="width:12%;">870&euro;</div>
+          <div class="timeline-bar agency" style="width:100%;"></div>
+        </div>
+        <div class="timeline-cumul">
+          <div class="bba-cost">870 &euro;</div>
+          <div class="agency-cost">14 250 &euro;</div>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-month">6 mois</div>
+        <div class="timeline-bar-container">
+          <div class="timeline-bar bba" style="width:24%;">1 740&euro;</div>
+          <div class="timeline-bar agency" style="width:100%;"></div>
+        </div>
+        <div class="timeline-cumul">
+          <div class="bba-cost">1 740 &euro;</div>
+          <div class="agency-cost">14 250 &euro;</div>
+        </div>
+      </div>
+      <div class="timeline-bottom">
+        <div>
+          <div class="tb-label">Vous &eacute;conomisez au minimum</div>
+          <div class="tb-value">12 510 &euro;</div>
+        </div>
+        <div style="text-align:right">
+          <div class="tb-label">M&ecirc;me apr&egrave;s 6 mois d'abo</div>
+          <div class="tb-value">x8 moins cher</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-header">
+    <div class="section-tag">Simple et rapide</div>
+    <h2>Comment &ccedil;a marche ?</h2>
+    <p>4 &eacute;tapes. Votre bien est en ligne en 24h.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-number">1</div>
+      <h3>D&eacute;posez en 5 min</h3>
+      <p>D&eacute;crivez votre bien. Notre IA r&eacute;dige une annonce optimis&eacute;e pour attirer les acheteurs qualifi&eacute;s.</p>
+      <span class="step-arrow">&rarr;</span>
+    </div>
+    <div class="step-card">
+      <div class="step-number">2</div>
+      <h3>Diffusion imm&eacute;diate</h3>
+      <p>Votre annonce est live sur 30+ portails pro en 24h. La m&ecirc;me visibilit&eacute; qu'une agence.</p>
+      <span class="step-arrow">&rarr;</span>
+    </div>
+    <div class="step-card">
+      <div class="step-number">3</div>
+      <h3>Recevez des contacts</h3>
+      <p>Les acheteurs vous contactent directement. Votre coach vous pr&eacute;pare pour chaque visite.</p>
+      <span class="step-arrow">&rarr;</span>
+    </div>
+    <div class="step-card">
+      <div class="step-number">4</div>
+      <h3>Vendez. R&eacute;siliez.</h3>
+      <p>Signez chez le notaire et arr&ecirc;tez l'abo. Vous gardez tout. Z&eacute;ro commission.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="calculator" id="calculator">
+  <div class="calc-container">
+    <h2>Combien allez-vous &eacute;conomiser ?</h2>
+    <p class="sub">Comparez le co&ucirc;t r&eacute;el d'une agence vs ByeByeAgent</p>
+    <div class="calc-input-group">
+      <label>Prix de vente estim&eacute; de votre bien</label>
+      <input type="range" class="calc-slider" id="priceSlider" min="80000" max="1000000" step="10000" value="285000">
+      <div class="calc-value">
+        <span>80 000 &euro;</span>
+        <strong id="priceDisplay">285 000 &euro;</strong>
+        <span>1 000 000 &euro;</span>
+      </div>
+    </div>
+    <div class="calc-input-group">
+      <label>Dur&eacute;e estim&eacute;e de vente</label>
+      <input type="range" class="calc-slider" id="monthSlider" min="1" max="6" step="1" value="2">
+      <div class="calc-value">
+        <span>1 mois</span>
+        <strong id="monthDisplay" style="font-size:22px;">2 mois</strong>
+        <span>6 mois</span>
+      </div>
+    </div>
+    <div class="calc-result">
+      <div class="small">Votre &eacute;conomie nette</div>
+      <div class="big" id="savingsDisplay">13 670 &euro;</div>
+      <div class="calc-comparison">
+        <div>Commission agence (5%)<br><strong id="agencyFee" style="text-decoration:line-through;opacity:.7;">14 250 &euro;</strong></div>
+        <div>ByeByeAgent (Pack Coaching)<br><strong id="bbaFee">580 &euro;</strong></div>
+      </div>
+    </div>
+    <div class="calc-cta">
+      <button class="btn-primary" style="margin-top:24px;" onclick="goToApp()">Je veux &eacute;conomiser <span id="ctaSavings">13 670</span>&euro; &rarr;</button>
+    </div>
+    <div class="calc-note">Calcul bas&eacute; sur le Pack Coaching &agrave; 290&euro;/mois. <strong>Sans engagement</strong>, r&eacute;siliable &agrave; tout moment.</div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="quiz-section" id="quiz">
+  <div class="quiz-card">
+    <h2>&#128161; &Ecirc;tes-vous pr&ecirc;t &agrave; vendre sans agent ?</h2>
+    <p class="sub">3 questions rapides pour savoir si ByeByeAgent est fait pour vous</p>
+    <div class="quiz-progress">
+      <div class="dot active" id="dot0"></div>
+      <div class="dot" id="dot1"></div>
+      <div class="dot" id="dot2"></div>
+    </div>
+    <div id="quizContent">
+      <div class="quiz-question" id="quizQuestion">Quel est votre rapport avec la vente immobili&egrave;re ?</div>
+      <div class="quiz-options" id="quizOptions"></div>
+    </div>
+    <div class="quiz-result" id="quizResult">
+      <div class="score-ring high" id="scoreRing">
+        <div class="score-num" id="scoreNum">90%</div>
+        <div class="score-label">Compatible</div>
+      </div>
+      <p id="scoreText"></p>
+      <button class="btn-primary" style="width:100%" onclick="goToApp()">D&eacute;couvrir ma formule id&eacute;ale &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<!-- OBJECTIONS -->
+<section class="objections" id="objections">
+  <div class="section-header">
+    <div class="section-tag">&#128173; On vous comprend</div>
+    <h2>Vos peurs, <span style="background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">nos r&eacute;ponses</span> concr&egrave;tes</h2>
+    <p>Les 6 questions que tous les vendeurs PAP se posent. Et ce qu'on en pense.</p>
+  </div>
+  <div class="obj-grid">
+    <div class="obj-card">
+      <div class="obj-fear">&laquo; Les acheteurs ne me prendront pas au s&eacute;rieux sans agence &raquo;</div>
+      <div class="obj-answer"><strong>Faux.</strong> Sur SeLoger, Bien'ici et les portails pros, votre annonce appara&icirc;t exactement comme celle d'une agence. <em>73% des acheteurs nous contactent sans savoir que c'est en direct.</em></div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-fear">&laquo; Je n'ai pas le temps de g&eacute;rer une vente &raquo;</div>
+      <div class="obj-answer"><strong>2h par semaine en moyenne.</strong> Nos clients g&egrave;rent leur vente entre midi et 14h. L'app planifie les visites, et notre IA r&eacute;pond aux messages <em>24h/24</em>.</div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-fear">&laquo; Je ne sais pas n&eacute;gocier &raquo;</div>
+      <div class="obj-answer"><strong>Vous n'&ecirc;tes pas seul.</strong> Avec le Pack Coaching, votre coach pr&eacute;pare chaque n&eacute;gociation avec vous, vous fournit les scripts et vous d&eacute;briefe avant chaque visite cruciale.</div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-fear">&laquo; Et si je vends moins cher qu'avec une agence&nbsp;? &raquo;</div>
+      <div class="obj-answer"><strong>L'inverse en r&eacute;alit&eacute;.</strong> Nos clients vendent en moyenne &agrave; <em>-3% du prix annonc&eacute;</em>, contre -5 &agrave; -8% en agence. Vous gardez la main sur les n&eacute;gociations.</div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-fear">&laquo; Comment savoir si l'acheteur peut vraiment payer&nbsp;? &raquo;</div>
+      <div class="obj-answer"><strong>On v&eacute;rifie pour vous.</strong> Avant tout compromis, on contr&ocirc;le l'attestation de financement et la situation de l'acheteur. <em>Z&eacute;ro mauvaise surprise.</em></div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-fear">&laquo; Le juridique, c'est trop compliqu&eacute; pour moi &raquo;</div>
+      <div class="obj-answer"><strong>Le notaire fait tout</strong>, comme dans toute vente. C'est lui qui r&eacute;dige le compromis et l'acte d&eacute;finitif. De notre c&ocirc;t&eacute;, on vous fournit le mod&egrave;le d'offre d'achat, on coordonne les &eacute;changes avec le notaire et on vous accompagne <em>jusqu'&agrave; la signature</em>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-header">
+    <div class="section-tag">Transparent et sans engagement</div>
+    <h2>Nos formules mensuelles</h2>
+    <p>Un abonnement clair, r&eacute;siliable &agrave; tout moment. Vous payez uniquement tant que votre annonce est en ligne.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <h3>Pack Essentiel</h3>
+      <div class="price-desc">Pour les vendeurs autonomes et d&eacute;brouillards</div>
+      <div class="price">190&euro; <span class="period">/mois</span></div>
+      <div class="price-daily">soit ~6,30&euro;/jour &mdash; moins qu'un caf&eacute; et un croissant</div>
+      <div class="price-compare">vs ~14 000&euro; de commission d'agence</div>
+      <ul class="price-features">
+        <li>Annonce sur 30+ portails professionnels</li>
+        <li>R&eacute;daction d'annonce assist&eacute;e par IA</li>
+        <li class="highlight">&#128218; Guide complet du PAP en 2026 (PDF 32 pages)</li>
+        <li class="highlight">&#128640; 5 boosts plateforme &mdash; remontez en t&ecirc;te des r&eacute;sultats</li>
+        <li>Photos illimit&eacute;es + conseils photo</li>
+        <li>Espace propri&eacute;taire avec suivi des contacts</li>
+        <li>Support par email et chat</li>
+        <li>R&eacute;siliable en 1 clic, &agrave; tout moment</li>
+      </ul>
+      <div style="background:var(--bg-alt);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:12px;color:var(--text-light)">
+        <strong style="color:var(--text);font-size:13px">+ Options disponibles :</strong><br>
+        &#128249; Visite virtuelle &middot; &#128247; Photos pro &middot; &#128203; Diagnostics (-10%)
+      </div>
+      <button class="price-btn outline" onclick="goToApp()">Commencer avec l'Essentiel</button>
+    </div>
+    <div class="price-card featured">
+      <div class="popular-badge">&#11088; CHOISI PAR 78% DES VENDEURS</div>
+      <h3>Pack Coaching</h3>
+      <div class="price-desc">L'accompagnement d'un pro, sans la commission</div>
+      <div class="price">290&euro; <span class="period">/mois</span></div>
+      <div class="price-daily">soit ~9,60&euro;/jour &mdash; le prix d'un d&eacute;jeuner</div>
+      <div class="price-compare">vs ~14 000&euro; de commission d'agence</div>
+      <ul class="price-features">
+        <li>Tout le Pack Essentiel, plus :</li>
+        <li class="highlight">Estimation pro personnalis&eacute;e de votre bien</li>
+        <li class="highlight">Coach immobilier d&eacute;di&eacute; 6j/7</li>
+        <li class="highlight">Pr&eacute;paration visites + coaching n&eacute;gociation</li>
+        <li class="highlight">Suivi complet jusqu'&agrave; la signature notaire</li>
+        <li>IA Coach disponible 24h/24</li>
+      </ul>
+      <div style="background:rgba(79,70,229,.05);border:1px solid rgba(79,70,229,.1);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:12px;color:var(--primary)">
+        <strong style="font-size:13px">+ Options incluses ou &agrave; prix r&eacute;duit :</strong><br>
+        &#128249; Visite virtuelle 360&deg; &middot; &#128247; Photos pro &middot; &#128203; Diagnostics <strong>-10%</strong>
+      </div>
+      <button class="price-btn filled" onclick="goToApp()">Commencer avec le Coaching &rarr;</button>
+    </div>
+  </div>
+  <div class="guarantee-wrapper">
+    <div class="guarantee">&#128737;&#65039; Sans engagement &mdash; R&eacute;siliable en 1 clic &mdash; Rembours&eacute; si non satisfait le 1er mois</div>
+  </div>
+  <div class="pricing-note">Vendu en moyenne en 31 jours = 1 &agrave; 2 mois d'abonnement seulement</div>
+</section>
+
+<!-- OPTIONS / BOOSTERS -->
+<section class="options-section">
+  <div class="section-header">
+    <div class="section-tag">Boostez votre vente</div>
+    <h2>Des options pour aller encore plus loin</h2>
+    <p>Ajoutez des services professionnels &agrave; la carte pour maximiser l'attractivit&eacute; de votre bien</p>
+  </div>
+  <div class="options-grid">
+    <!-- Option 1: Visite virtuelle -->
+    <div style="background:white;border-radius:20px;padding:32px 24px;box-shadow:var(--shadow);border:1px solid var(--border);text-align:center;transition:all .3s;position:relative" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow)'">
+      <div style="width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#DBEAFE,#EDE9FE);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px">&#128249;</div>
+      <h3 style="font-size:17px;font-weight:700;margin-bottom:6px">Visite virtuelle 360&deg;</h3>
+      <p style="font-size:13px;color:var(--text-light);line-height:1.6;margin-bottom:16px">Offrez aux acheteurs une immersion compl&egrave;te dans votre bien. Les annonces avec visite virtuelle re&ccedil;oivent <strong style="color:var(--primary)">3x plus de contacts</strong>.</p>
+      <div style="background:var(--bg-alt);border-radius:10px;padding:10px;font-size:13px;color:var(--text-light)">
+        <span style="font-weight:700;color:var(--primary)">En option</span> &mdash; sur devis
+      </div>
+    </div>
+    <!-- Option 2: Photos pro -->
+    <div style="background:white;border-radius:20px;padding:32px 24px;box-shadow:var(--shadow);border:2px solid var(--accent);text-align:center;transition:all .3s;position:relative" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow)'">
+      <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:white;padding:4px 14px;border-radius:50px;font-size:11px;font-weight:700">RECOMMAND&Eacute;</div>
+      <div style="width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#FEF3C7,#FDBA74);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px">&#128247;</div>
+      <h3 style="font-size:17px;font-weight:700;margin-bottom:6px">Photos professionnelles</h3>
+      <p style="font-size:13px;color:var(--text-light);line-height:1.6;margin-bottom:16px">Un photographe immobilier se d&eacute;place chez vous. Des photos qui font la diff&eacute;rence : <strong style="color:var(--accent)">+40% de clics</strong> sur votre annonce.</p>
+      <div style="background:#FFF7ED;border-radius:10px;padding:10px;font-size:13px;color:var(--accent-dark)">
+        <span style="font-weight:700">En option</span> &mdash; sur devis
+      </div>
+    </div>
+    <!-- Option 3: Diagnostics -->
+    <div style="background:white;border-radius:20px;padding:32px 24px;box-shadow:var(--shadow);border:1px solid var(--border);text-align:center;transition:all .3s;position:relative" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow)'">
+      <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--success);color:white;padding:4px 14px;border-radius:50px;font-size:11px;font-weight:700">-10% EXCLUSIF</div>
+      <div style="width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,var(--success-light),#A7F3D0);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px">&#128203;</div>
+      <h3 style="font-size:17px;font-weight:700;margin-bottom:6px">Diagnostics immobiliers</h3>
+      <p style="font-size:13px;color:var(--text-light);line-height:1.6;margin-bottom:16px">DPE, amiante, plomb, &eacute;lectricit&eacute;&hellip; Tous les diagnostics obligatoires via nos partenaires certifi&eacute;s avec <strong style="color:var(--success)">10% de r&eacute;duction exclusive</strong>.</p>
+      <div style="background:var(--success-light);border-radius:10px;padding:10px;font-size:13px;color:#065F46">
+        <span style="font-weight:700">-10%</span> r&eacute;serv&eacute; aux clients ByeByeAgent
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT 360 -->
+<section class="support-360">
+  <div class="section-header">
+    <div class="section-tag">&#128737;&#65039; S&eacute;curit&eacute; maximale</div>
+    <h2>Tout est <span style="background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">encadr&eacute; et s&eacute;curis&eacute;</span></h2>
+    <p>De la cr&eacute;ation de l'annonce &agrave; la signature chez le notaire, vous &ecirc;tes accompagn&eacute; sur chaque &eacute;tape critique.</p>
+  </div>
+  <div class="support-grid">
+    <div class="support-card">
+      <div class="support-icon" style="background:linear-gradient(135deg,#DBEAFE,#EDE9FE)">&#128064;</div>
+      <h3>Vos visites en s&eacute;r&eacute;nit&eacute;</h3>
+      <ul>
+        <li>Pr&eacute;-qualification des visiteurs (identit&eacute;, motivation, budget)</li>
+        <li>Agenda partag&eacute; avec cr&eacute;neaux que vous choisissez</li>
+        <li>Trame de visite pr&ecirc;te &agrave; l'emploi</li>
+        <li>R&eacute;cap automatique post-visite et feedback acheteur</li>
+      </ul>
+    </div>
+    <div class="support-card">
+      <div class="support-icon" style="background:linear-gradient(135deg,#FEF3C7,#FDBA74)">&#128269;</div>
+      <h3>V&eacute;rification acheteur</h3>
+      <ul>
+        <li>Contr&ocirc;le de l'attestation bancaire de financement</li>
+        <li>V&eacute;rification d'identit&eacute; (KYC)</li>
+        <li>Estimation de la solvabilit&eacute; via nos courtiers partenaires</li>
+        <li>Alerte automatique en cas de profil &agrave; risque</li>
+      </ul>
+    </div>
+    <div class="support-card">
+      <div class="support-icon" style="background:linear-gradient(135deg,#A7F3D0,#D1FAE5)">&#128220;</div>
+      <h3>C&ocirc;t&eacute; juridique</h3>
+      <ul>
+        <li>Mod&egrave;les d'offre d'achat conformes au droit fran&ccedil;ais</li>
+        <li>Coordination du compromis r&eacute;dig&eacute; par votre notaire</li>
+        <li>Tous les diagnostics obligatoires via partenaires (-10%)</li>
+        <li>Suivi jusqu'&agrave; l'acte authentique chez le notaire</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PORTALS -->
+<section class="portals">
+  <div class="portals-inner">
+    <p>VOTRE ANNONCE EST DIFFUS&Eacute;E SUR LES M&Ecirc;MES PORTAILS QUE LES AGENCES</p>
+    <div class="portal-logos">
+      <div class="portal-logo main">SeLoger</div>
+      <div class="portal-logo main">Bien'ici</div>
+      <div class="portal-logo main">Logic-Immo</div>
+      <div class="portal-logo">LeBonCoin</div>
+      <div class="portal-logo">Figaro Immo</div>
+      <div class="portal-logo">ParuVendu</div>
+      <div class="portal-logo">Superimmo</div>
+      <div class="portal-logo">+23 autres</div>
+    </div>
+  </div>
+</section>
+
+<!-- R\u00c9SEAU -->
+<section class="network">
+  <div class="network-inner">
+    <div class="section-header network-header">
+      <div class="section-tag">&#129309; Un r&eacute;seau pro &agrave; vos c&ocirc;t&eacute;s</div>
+      <h2>Vous n'&ecirc;tes <span style="background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">jamais seul</span></h2>
+      <p>Notre r&eacute;seau de partenaires certifi&eacute;s s&eacute;curise chaque &eacute;tape de votre vente</p>
+    </div>
+    <div class="network-stats">
+      <div class="net-stat">
+        <div class="net-num">320+</div>
+        <div class="net-lbl">Notaires partenaires</div>
+      </div>
+      <div class="net-stat">
+        <div class="net-num">180+</div>
+        <div class="net-lbl">Diagnostiqueurs certifi&eacute;s (-10%)</div>
+      </div>
+      <div class="net-stat">
+        <div class="net-num">95</div>
+        <div class="net-lbl">D&eacute;partements couverts</div>
+      </div>
+      <div class="net-stat">
+        <div class="net-num">12</div>
+        <div class="net-lbl">Courtiers en pr&ecirc;t partenaires</div>
+      </div>
+    </div>
+    <div class="net-coverage">&#128205; Service disponible <strong>partout en France m&eacute;tropolitaine</strong> &mdash; DOM-TOM sur demande</div>
+  </div>
+</section>
+
+<!-- LIVE FEED -->
+<!-- LIVE FEED V2 - Real time activity -->
+<section class="live-feed">
+  <div class="feed-container">
+    <div class="feed-header-wrap">
+      <div class="feed-live-badge"><span class="live-dot"></span> En direct</div>
+      <h2>Ils vendent <span>maintenant</span> avec ByeByeAgent</h2>
+      <p>L'activit&eacute; r&eacute;elle de la plateforme, mise &agrave; jour en continu. Ce n'est pas une d&eacute;mo.</p>
+    </div>
+
+    <!-- Counters bar -->
+    <div class="feed-stats">
+      <div class="feed-stat">
+        <div class="feed-stat-num"><span class="live-mini-dot"></span><span class="num-target" id="feedStatActive">1&#8239;247</span></div>
+        <div class="feed-stat-lbl">Annonces actives</div>
+      </div>
+      <div class="feed-stat">
+        <div class="feed-stat-num"><span class="num-success" id="feedStatSold">312</span></div>
+        <div class="feed-stat-lbl">Ventes ce mois</div>
+      </div>
+      <div class="feed-stat">
+        <div class="feed-stat-num"><span class="num-accent" id="feedStatVisits">4&#8239;821</span></div>
+        <div class="feed-stat-lbl">Visites cette semaine</div>
+      </div>
+      <div class="feed-stat">
+        <div class="feed-stat-num"><span class="num-success" id="feedStatSavings">5,8&nbsp;M&euro;</span></div>
+        <div class="feed-stat-lbl">&Eacute;conomis&eacute;s en 2026</div>
+      </div>
+    </div>
+
+    <!-- Marquee scroller (auto-dupliqu&eacute; via JS pour boucle infinie) -->
+    <div class="feed-marquee">
+      <div class="feed-track" id="feedTrack">
+        <div class="feed-item">
+          <div class="feed-item-top">
+            <div class="feed-type sold">&#10003; Vendu</div>
+            <div class="feed-time recent"><span class="time-dot"></span>Il y a 4 min</div>
+          </div>
+          <div class="feed-detail">Appartement T4 &mdash; Bordeaux Caud&eacute;ran</div>
+          <div class="feed-meta">
+            <span class="feed-loc">&#128205; 33000</span>
+            <span class="feed-sep">&#9679;</span>
+            <span>Vendu en 19j</span>
+            <span class="feed-sep">&#9679;</span>
+            <span class="feed-savings">&#128176; 18&#8239;400&euro; &eacute;conomis&eacute;s</span>
+          </div>
+        </div>
+
+        <div class="feed-item">
+          <div class="feed-item-top">
+            <div class="feed-type offer">&#128188; Offre re&ccedil;ue</div>
+            <div class="feed-time recent"><span class="time-dot"></span>Il y a 12 min</div>
+          </div>
+          <div class="feed-detail">Maison 5p. &mdash; Nantes Erdre</div>
+          <div class="feed-meta">
+            <span class="feed-loc">&#128205; 44000</span>
+            <span class="feed-sep">&#9679;</span>
+            <span>3<sup>e</sup> offre sur l'annonce</span>
+            <span class="feed-sep">&#9679;</span>
+            <span>Au prix demand&eacute;</span>
+          </div>
+        </div>
+
+        <div class="feed-item">
+          <div class="feed-item-top">
+            <div class="feed-type visit">&#128065;&#65039; 8 visites</div>
+            <div class="feed-time recent"><span class="time-dot"></span>Aujourd'hui</div>
+          </div>
+          <div class="feed-detail">Studio meubl&eacute; &mdash; Paris 15e</div>
+          <div class="feed-meta">
+            <span class="feed-loc">&#128205; 75015</span>
+            <span class="feed-sep">&#9679;</span>
+            <span>En ligne depuis 6j</span>
+          </div>
+        </div>
+
+        <div class="feed-item">
+          <div class="feed-item-top">
+            <div class="feed-type new">&#9733; Nouvelle annonce</div>
+            <div class="feed-time recent"><span class="time-dot"></span>Il y a 26 min</div>
+          </div>
+          <div class="feed-detail">T3 r&eacute;nov&eacute; &mdash; Lyon 3e</div>
+          <div class="feed-meta">
+            <span class="feed-loc">&#128205; 69003</span>
+            <span class="feed-sep">&#9679;</span>
+            <span>Pack Coaching</span>
+            <span class="feed-sep">&#9679;</span>
+            <span>32 portails pro</span>
+          </div>
+        </div>
+
+        <div class="feed-item">
+          <div class="feed-item-top">
+            <div class="feed-type compromis">&#9997;&#65039; Compromis sign&eacute;</div>
+            <div class="feed-time"><span class="time-dot"></span>Il y a 1h</div>
+          </div>
+          <div class="feed-detail">Maison de ville &mdash; Toulouse</div>
+          <div class="feed-meta">
+            <span class="feed-loc">&#128205; 31000</span>
+            <span class="feed-sep">&#9679;</span>
+            <span>Acte d&eacute;finitif sous 3 mois</span>
+          </div>
+        </div>
+
+        <div class="feed-item">
+          <div class="feed-item-top">
+            <div class="feed-type sold">&#10003; Vendu</div>
+            <div class="feed-time"><span class="time-dot"></span>Il y a 2h</div>
+          </div>
+          <div class="feed-detail">T2 avec balcon &mdash; Marseille 8e</div>
+          <div class="feed-meta">
+            <span class="feed-loc">&#128205; 13008</span>
+            <span class="feed-sep">&#9679;</span>
+            <span>Vendu en 28j</span>
+            <span class="feed-sep">&#9679;</span>
+            <span class="feed-savings">&#128176; 13&#8239;200&euro; &eacute;conomis&eacute;s</span>
+          </div>
+        </div>
+
+        <div class="feed-item">
+          <div class="feed-item-top">
+            <div class="feed-type savings">&#128640; Au-dessus du prix</div>
+            <div class="feed-time"><span class="time-dot"></span>Il y a 3h</div>
+          </div>
+          <div class="feed-detail">Maison T5 &mdash; Annecy</div>
+          <div class="feed-meta">
+            <span class="feed-loc">&#128205; 74000</span>
+            <span class="feed-sep">&#9679;</span>
+            <span>Vendue +2,3% du prix annonc&eacute;</span>
+          </div>
+        </div>
+
+        <div class="feed-item">
+          <div class="feed-item-top">
+            <div class="feed-type new">&#9733; Nouvelle annonce</div>
+            <div class="feed-time"><span class="time-dot"></span>Il y a 38 min</div>
+          </div>
+          <div class="feed-detail">Loft atypique &mdash; Lille Vieux-Lille</div>
+          <div class="feed-meta">
+            <span class="feed-loc">&#128205; 59000</span>
+            <span class="feed-sep">&#9679;</span>
+            <span>Pack Essentiel</span>
+          </div>
+        </div>
+
+        <div class="feed-item">
+          <div class="feed-item-top">
+            <div class="feed-type visit">&#128065;&#65039; 14 visites</div>
+            <div class="feed-time"><span class="time-dot"></span>Cette semaine</div>
+          </div>
+          <div class="feed-detail">Duplex &mdash; Rennes Centre</div>
+          <div class="feed-meta">
+            <span class="feed-loc">&#128205; 35000</span>
+            <span class="feed-sep">&#9679;</span>
+            <span>5 offres re&ccedil;ues</span>
+          </div>
+        </div>
+
+        <div class="feed-item">
+          <div class="feed-item-top">
+            <div class="feed-type sold">&#10003; Vendu</div>
+            <div class="feed-time"><span class="time-dot"></span>Hier</div>
+          </div>
+          <div class="feed-detail">Maison familiale &mdash; Strasbourg</div>
+          <div class="feed-meta">
+            <span class="feed-loc">&#128205; 67000</span>
+            <span class="feed-sep">&#9679;</span>
+            <span>22j</span>
+            <span class="feed-sep">&#9679;</span>
+            <span class="feed-savings">&#128176; 21&#8239;800&euro; &eacute;conomis&eacute;s</span>
+          </div>
+        </div>
+
+        <div class="feed-item">
+          <div class="feed-item-top">
+            <div class="feed-type offer">&#128188; Offre re&ccedil;ue</div>
+            <div class="feed-time"><span class="time-dot"></span>Il y a 5h</div>
+          </div>
+          <div class="feed-detail">T3 vue mer &mdash; Nice</div>
+          <div class="feed-meta">
+            <span class="feed-loc">&#128205; 06000</span>
+            <span class="feed-sep">&#9679;</span>
+            <span>Offre &agrave; -1,8% du prix</span>
+          </div>
+        </div>
+
+        <div class="feed-item">
+          <div class="feed-item-top">
+            <div class="feed-type savings">&#128640; Diffusion boost&eacute;e</div>
+            <div class="feed-time"><span class="time-dot"></span>Il y a 1h</div>
+          </div>
+          <div class="feed-detail">Maison &agrave; r&eacute;nover &mdash; Montpellier</div>
+          <div class="feed-meta">
+            <span class="feed-loc">&#128205; 34000</span>
+            <span class="feed-sep">&#9679;</span>
+            <span>+340 vues en 24h</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feed-trust-line">
+      <div class="feed-trust-avatars">
+        <span>ML</span><span>JD</span><span>SC</span><span>+</span>
+      </div>
+      <span><strong>1&#8239;247 vendeurs</strong> utilisent ByeByeAgent en ce moment m&ecirc;me</span>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header">
+    <div class="section-tag">Ils ont vendu sans commission</div>
+    <h2>Des vendeurs comme vous</h2>
+    <p>Ils h&eacute;sitaient aussi. Voici ce qu'ils en disent apr&egrave;s la vente.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="testimonial-text">J'avais peur de ne pas y arriver seule. Le coach m'a pr&eacute;par&eacute;e &agrave; chaque visite, m'a aid&eacute;e &agrave; n&eacute;gocier. R&eacute;sultat : vendu au-dessus du prix demand&eacute;.</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar" style="background:var(--primary)">SL</div>
+        <div>
+          <div class="testimonial-name">Sophie L.</div>
+          <div class="testimonial-detail">T3 &agrave; Lyon 7e &mdash; Vendu en 23 jours</div>
+          <div class="testimonial-savings">13 670&euro; &eacute;conomis&eacute;s</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="testimonial-text">Mon annonce sur SeLoger d&egrave;s le lendemain. En 2 semaines, 8 visites et 3 offres. J'ai pay&eacute; 2 mois d'abo soit 580&euro; au lieu de 18 000&euro; de commission. Le choix est vite fait.</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar" style="background:var(--accent)">MP</div>
+        <div>
+          <div class="testimonial-name">Marc P.</div>
+          <div class="testimonial-detail">Maison &agrave; Villeurbanne &mdash; Vendu en 31 jours</div>
+          <div class="testimonial-savings">17 420&euro; &eacute;conomis&eacute;s</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="testimonial-text">Au d&eacute;but, mon entourage &eacute;tait sceptique. Mais quand j'ai vendu en 18 jours, 5% au-dessus de l'estimation, et gard&eacute; 100% du prix&hellip; ils ont tous voulu savoir comment.</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar" style="background:var(--success)">AN</div>
+        <div>
+          <div class="testimonial-name">Aur&eacute;lie N.</div>
+          <div class="testimonial-detail">T2 &agrave; Paris 11e &mdash; Vendu en 18 jours</div>
+          <div class="testimonial-savings">22 500&euro; &eacute;conomis&eacute;s</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="testimonial-meta">
+    <div class="rating">4.8<span style="font-size:18px;color:var(--text-light);font-weight:400">/5</span></div>
+    <div class="rating-text">Note moyenne bas&eacute;e sur 127 avis v&eacute;rifi&eacute;s</div>
+  </div>
+</section>
+
+<!-- BENEFITS HIDDEN (Au-del&agrave; de l'&eacute;conomie) -->
+<section class="benefits-hidden">
+  <div class="section-header">
+    <div class="section-tag">&#10024; Au-del&agrave; de l'&eacute;conomie</div>
+    <h2>Ce que vous gagnez vraiment</h2>
+    <p>Vendre en direct, ce n'est pas seulement &eacute;conomiser. C'est reprendre le contr&ocirc;le total de votre projet.</p>
+  </div>
+  <div class="benefits-grid">
+    <div class="ben-card">
+      <div class="ben-icon">&#9201;&#65039;</div>
+      <h3>30h &eacute;conomis&eacute;es</h3>
+      <p>Plus de RDV agence inutiles, plus de visites filtr&eacute;es par un tiers. Vous g&eacute;rez votre planning.</p>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon">&#127919;</div>
+      <h3>Contr&ocirc;le total du prix</h3>
+      <p>Vous d&eacute;cidez du prix. Pas de pression d'agence pour baisser votre bien afin de vendre vite.</p>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon">&#9889;</div>
+      <h3>R&eacute;activit&eacute; maximale</h3>
+      <p>Vous r&eacute;pondez aux acqu&eacute;reurs en direct, sans interm&eacute;diaire qui filtre ou retarde les contacts.</p>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon">&#127757;</div>
+      <h3>&Agrave; votre rythme</h3>
+      <p>Pas de mandat exclusif. Pas de dur&eacute;e impos&eacute;e. Vous activez et d&eacute;sactivez quand vous voulez.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+  <div class="trust-grid">
+    <div class="trust-item">
+      <div class="trust-icon shield" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 3l11 4v9c0 7-4.8 11.5-11 13-6.2-1.5-11-6-11-13V7l11-4z" fill="url(#gShield)" stroke="#059669" stroke-width="1.4" stroke-linejoin="round"/>
+          <path class="ti-check" d="M11 16.5l3.5 3.5 7-7.5" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="gShield" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#10B981"/><stop offset="1" stop-color="#059669"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="trust-label">Sans engagement</div>
+      <div class="trust-sub">R&eacute;siliable en 1 clic</div>
+    </div>
+
+    <div class="trust-item">
+      <div class="trust-icon building" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="9" width="20" height="20" rx="2" fill="url(#gBuild)" stroke="#3730A3" stroke-width="1.4"/>
+          <rect x="9.5" y="13" width="3.2" height="3.2" rx=".6" fill="white" fill-opacity=".85"/>
+          <rect x="14.4" y="13" width="3.2" height="3.2" rx=".6" fill="white" fill-opacity=".85"/>
+          <rect x="19.3" y="13" width="3.2" height="3.2" rx=".6" fill="white" fill-opacity=".85"/>
+          <rect x="9.5" y="18" width="3.2" height="3.2" rx=".6" fill="white" fill-opacity=".7"/>
+          <rect x="19.3" y="18" width="3.2" height="3.2" rx=".6" fill="white" fill-opacity=".7"/>
+          <rect x="14" y="22.5" width="4" height="6.5" rx=".5" fill="white" fill-opacity=".95"/>
+          <path d="M5 9L16 3l11 6" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="gBuild" x1="0" y1="9" x2="32" y2="29" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#4F46E5"/><stop offset="1" stop-color="#7C3AED"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="trust-label">Propuls&eacute; par Ark France</div>
+      <div class="trust-sub">Agence immobili&egrave;re agr&eacute;&eacute;e</div>
+    </div>
+
+    <div class="trust-item">
+      <div class="trust-icon lock" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 14V10a6 6 0 1 1 12 0v4" stroke="#EA580C" stroke-width="2.2" stroke-linecap="round"/>
+          <rect x="6.5" y="14" width="19" height="14" rx="3" fill="url(#gLock)" stroke="#C2410C" stroke-width="1.2"/>
+          <circle cx="16" cy="20" r="2.4" fill="white"/>
+          <rect x="14.8" y="20.5" width="2.4" height="4" rx="1.2" fill="white"/>
+        </svg>
+        <defs>
+          <linearGradient id="gLock" x1="6.5" y1="14" x2="25.5" y2="28" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#F97316"/><stop offset="1" stop-color="#EA580C"/>
+          </linearGradient>
+        </defs>
+      </div>
+      <div class="trust-label">Donn&eacute;es prot&eacute;g&eacute;es</div>
+      <div class="trust-sub">Conforme RGPD</div>
+    </div>
+
+    <div class="trust-item">
+      <div class="trust-icon phone" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 5h6a2 2 0 0 1 2 2l1.5 4.5a2 2 0 0 1-.6 2.2L16 15.5a14 14 0 0 0 7 7l1.8-1.9a2 2 0 0 1 2.2-.6L31.5 21a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2C17 31 1 15 1 7a2 2 0 0 1 2-2h6z" transform="translate(-1 -1)" fill="url(#gPhone)" stroke="#1D4ED8" stroke-width="1.3" stroke-linejoin="round"/>
+          <circle cx="23" cy="9" r="2.6" fill="white" stroke="#1D4ED8" stroke-width="1"/>
+          <circle cx="23" cy="9" r="1" fill="#0EA5E9"/>
+          <defs>
+            <linearGradient id="gPhone" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#0EA5E9"/><stop offset="1" stop-color="#2563EB"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="trust-label">Support humain 6j/7</div>
+      <div class="trust-sub">T&eacute;l&eacute;phone, email, chat</div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD MAGNET + APPEL D&Eacute;COUVERTE -->
+<section class="lead-section" id="ressources">
+  <div class="section-header">
+    <div class="section-tag">&#128218; Ressources gratuites</div>
+    <h2>Pas encore pr&ecirc;t ? Aidez-vous d'abord</h2>
+    <p>Deux ressources gratuites pour vous lancer en confiance, <strong>sans engagement</strong>.</p>
+  </div>
+  <div class="lead-container">
+    <div class="lead-card lead-guide">
+      <div class="lead-tag">&#128196; GUIDE GRATUIT</div>
+      <h3>Le guide complet du PAP en 2026</h3>
+      <p>32 pages pour tout savoir : estimation, photos, annonce, n&eacute;gociation, &eacute;tapes notariales. Le m&eacute;mo de r&eacute;f&eacute;rence des vendeurs particuliers, r&eacute;dig&eacute; par nos experts Ark France.</p>
+      <button class="btn-primary" onclick="goToApp()">T&eacute;l&eacute;charger le guide (PDF)</button>
+      <div class="lead-meta">&#10003; Aucun spam &middot; D&eacute;sabonnement en 1 clic</div>
+    </div>
+    <div class="lead-card lead-call">
+      <div class="lead-tag">&#128222; APPEL D&Eacute;COUVERTE</div>
+      <h3>15 min avec un expert Ark France</h3>
+      <p>Un doute sur votre projet ? On vous offre 15 minutes avec un conseiller immobilier exp&eacute;riment&eacute;. Estimation indicative, conseils, r&eacute;ponses &agrave; vos questions. <strong>Sans engagement</strong>, sans relance commerciale.</p>
+      <button class="btn-primary" onclick="goToApp()">R&eacute;server mon cr&eacute;neau</button>
+      <div class="lead-meta">&#10003; Du lundi au samedi &middot; 9h - 19h</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-header">
+    <div class="section-tag">Vos questions</div>
+    <h2>Questions fr&eacute;quentes</h2>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item open">
+      <div class="faq-q">Pourquoi payer un abonnement mensuel plut&ocirc;t qu'un forfait unique ? <span class="arrow">&#9660;</span></div>
+      <div class="faq-a">C'est justement ce qui vous prot&egrave;ge. Pas d'engagement, pas de gros montant d'un coup. Vous ne payez que tant que votre annonce est en ligne. D&egrave;s que vous vendez, vous r&eacute;siliez en 1 clic. Et m&ecirc;me apr&egrave;s 6 mois d'abonnement, vous &eacute;conomisez encore plus de 12 000&euro; par rapport &agrave; une agence.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Mon bien sera-t-il vraiment sur SeLoger et les portails pro ? <span class="arrow">&#9660;</span></div>
+      <div class="faq-a">Oui, d&egrave;s les premi&egrave;res 24h. Votre annonce appara&icirc;t sur SeLoger, Bien'ici, Logic-Immo et +27 autres portails &mdash; exactement les m&ecirc;mes que ceux utilis&eacute;s par les agences immobili&egrave;res. C'est notre partenariat professionnel qui le permet.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Quelle est la diff&eacute;rence avec LeBonCoin ou PAP ? <span class="arrow">&#9660;</span></div>
+      <div class="faq-a">Sur LeBonCoin, votre annonce est noy&eacute;e parmi des milliers d'autres et vous n'avez acc&egrave;s qu'&agrave; un seul site. Avec ByeByeAgent, vous &ecirc;tes pr&eacute;sent sur +30 portails professionnels simultan&eacute;ment (dont SeLoger, r&eacute;serv&eacute; aux pros), avec une annonce optimis&eacute;e par IA et un coach qui vous accompagne. C'est la puissance d'une agence, sans la commission.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Je peux vraiment r&eacute;silier &agrave; tout moment ? <span class="arrow">&#9660;</span></div>
+      <div class="faq-a">Oui, z&eacute;ro engagement. Vous r&eacute;siliez en 1 clic depuis votre espace propri&eacute;taire, sans justification. Si vous vendez en 3 semaines, vous ne payez qu'un seul mois. Si vous changez d'avis, vous arr&ecirc;tez imm&eacute;diatement.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Qui m'accompagne pendant la vente ? <span class="arrow">&#9660;</span></div>
+      <div class="faq-a">Avec le Pack Coaching, un expert immobilier d&eacute;di&eacute; vous accompagne 6j/7 : estimation du bien, r&eacute;daction d'annonce, pr&eacute;paration des visites, coaching n&eacute;gociation, et suivi jusqu'&agrave; la signature chez le notaire. Et notre IA Coach est disponible 24h/24 pour toutes vos questions.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Est-ce l&eacute;gal de vendre sans agent immobilier ? <span class="arrow">&#9660;</span></div>
+      <div class="faq-a">Absolument. La vente entre particuliers est encadr&eacute;e par la loi en France. Le notaire (obligatoire) s&eacute;curise la transaction. ByeByeAgent vous donne simplement les outils professionnels pour maximiser votre visibilit&eacute; et vendre dans les meilleures conditions.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Et si mon bien ne se vend pas ? <span class="arrow">&#9660;</span></div>
+      <div class="faq-a">Vous pouvez r&eacute;silier &agrave; tout moment sans frais. Si vous n'&ecirc;tes pas satisfait d&egrave;s le premier mois, nous vous remboursons. Et votre coach est l&agrave; pour ajuster la strat&eacute;gie (prix, annonce, photos) afin d'acc&eacute;l&eacute;rer la vente.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Pr&ecirc;t &agrave; garder 100% de votre prix de vente ?</h2>
+  <p>Rejoignez les vendeurs qui ont &eacute;conomis&eacute; en moyenne 14 000&euro; en vendant avec ByeByeAgent.</p>
+  <button class="btn-white" onclick="goToApp()">D&eacute;poser mon annonce &mdash; D&egrave;s 190&euro;/mois &rarr;</button>
+  <div class="final-trust">
+    <span>&#128737;&#65039; Sans engagement</span>
+    <span>&#9889; En ligne en 24h</span>
+    <span>&#128172; Coach d&eacute;di&eacute; 6j/7</span>
+    <span>&#128176; Z&eacute;ro commission</span>
+  </div>
+</section>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-text">Vendez votre bien <strong>sans commission</strong> d'agence</div>
+  <div class="sticky-price">D&egrave;s 190&euro;/mois</div>
+  <button class="btn-primary" style="padding:10px 24px;font-size:14px" onclick="goToApp()">D&eacute;poser mon annonce &rarr;</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">ByeBye<span>Agent</span></div>
+      <div class="footer-brand-text">Vendez votre bien immobilier comme un professionnel, sans payer de commission. Un service propuls&eacute; par Ark France, agence immobili&egrave;re agr&eacute;&eacute;e.</div>
+    </div>
+    <div>
+      <h4>Service</h4>
+      <a href="#">Comment &ccedil;a marche</a>
+      <a href="#">Nos formules</a>
+      <a href="#">T&eacute;moignages</a>
+      <a href="#">FAQ</a>
+    </div>
+    <div>
+      <h4>Ressources</h4>
+      <a href="#">Blog immobilier</a>
+      <a href="#">Guide du vendeur</a>
+      <a href="#">Estimer mon bien</a>
+      <a href="#">Simulateur d'&eacute;conomies</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="#">contact@byebyeagent.fr</a>
+      <a href="#">01 23 45 67 89</a>
+      <a href="#">Lun-Sam : 9h-19h</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 ByeByeAgent &mdash; Ark France. Tous droits r&eacute;serv&eacute;s.</span>
+    <span>Mentions l&eacute;gales &middot; CGV &middot; Politique de confidentialit&eacute;</span>
+  </div>
+</footer>
+
+<script>
+// ===== APP REDIRECT =====
+const APP_URL = 'https://byebyeagent2.bubbleapps.io/version-test';
+function goToApp(){ window.open(APP_URL, '_blank', 'noopener,noreferrer'); }
+
+// ===== ESTIMATION WIDGET =====
+// Base de prix m\u00e9dians \u20ac/m\u00b2 (donn\u00e9es indicatives 2024-2025)
+const CITY_PRICES = {
+  // Paris arrondissements
+  '75001':13500,'75002':12500,'75003':13000,'75004':14500,'75005':13500,'75006':16000,'75007':16500,'75008':14500,
+  '75009':12500,'75010':10800,'75011':11500,'75012':11000,'75013':10500,'75014':11500,'75015':12000,'75016':13500,
+  '75017':12200,'75018':10500,'75019':9500,'75020':10000,
+  // Grandes m\u00e9tropoles
+  'paris':12500,'lyon':5400,'marseille':3500,'bordeaux':4900,'lille':3800,'toulouse':3900,'nantes':4100,
+  'nice':5200,'strasbourg':3500,'montpellier':3700,'rennes':4200,'reims':2700,'le havre':2300,
+  'saint-etienne':1500,'toulon':3400,'grenoble':3200,'dijon':2900,'angers':3300,'nimes':2400,
+  'villeurbanne':4500,'aix-en-provence':5600,'brest':2400,'le mans':2300,'amiens':2500,'tours':3300,
+  'limoges':1800,'clermont-ferrand':2700,'besancon':2400,'orleans':2800,'metz':2300,'rouen':2800,
+  'mulhouse':1800,'caen':2900,'nancy':2700,'argenteuil':4200,'roubaix':1700,'tourcoing':1700,
+  'avignon':2700,'nanterre':5800,'creteil':4500,'versailles':6800,'pau':2400,'courbevoie':7600,
+  'asnieres-sur-seine':6000,'colombes':5400,'la rochelle':4300,'cannes':6800,'antibes':5400,
+  'boulogne-billancourt':9200,'beziers':1900,'calais':1500,'saint-nazaire':2800,'merignac':4500,
+  'venissieux':2800,'perpignan':2200,'levallois-perret':10500,'neuilly-sur-seine':12000,
+  'issy-les-moulineaux':9500,'montreuil':6500,'saint-denis':4300,'vincennes':9800,'meaux':2700,
+  'evreux':1900,'troyes':1900,'cherbourg':1900,'poitiers':2300,'la roche-sur-yon':2600,
+  'bayonne':4200,'biarritz':6500,'arcachon':6800,'annecy':5800,'chamonix':7500,'chambery':3400,
+  'valence':2500,'sete':3300,'narbonne':2400,'cagnes-sur-mer':4800,'frejus':4200,'menton':5200,
+  'grasse':3500,'hyeres':4200,'la ciotat':5000,'aubagne':3500,'salon-de-provence':3200,
+  'lorient':2700,'vannes':3500,'quimper':2400,'saint-malo':4400,'cergy':3700,'corbeil-essonnes':3200,
+  'evry':3000,'massy':5500,'antony':6200,'sceaux':7500,'rueil-malmaison':7500,'suresnes':8000,
+  'puteaux':9000,'malakoff':8500,'montrouge':9500,'vanves':9000,'clichy':7500,'pantin':6500,
+  'aubervilliers':4800,'bobigny':4000,'noisy-le-grand':4200,'champigny-sur-marne':4200,
+  'maisons-alfort':6000,'ivry-sur-seine':6500,'villejuif':6200,'cachan':7000,'gentilly':7500,
+  'saint-ouen':6500,'epinay-sur-seine':3800,'gennevilliers':4500,'villeneuve-d-ascq':3000
+};
+const NATIONAL_AVG = 3200; // \u20ac/m\u00b2 par d\u00e9faut
+
+// Prix moyen \u20ac/m\u00b2 par d\u00e9partement (2024-2025, indicatif) - couvre TOUTE la France
+const DEPT_PRICES = {
+  '01':2900,'02':1500,'03':1400,'04':2700,'05':2900,'06':5500,'07':2400,'08':1300,'09':1700,
+  '10':1900,'11':2300,'12':1700,'13':4200,'14':2900,'15':1300,'16':1700,'17':3500,'18':1400,'19':1400,
+  '20':3400,'21':2700,'22':2700,'23':1100,'24':1900,'25':2300,'26':2700,'27':2100,'28':2000,'29':2700,
+  '2a':3800,'2b':2900,
+  '30':2700,'31':3700,'32':1900,'33':4200,'34':3500,'35':3500,'36':1200,'37':2800,'38':3000,'39':1800,
+  '40':3100,'41':1900,'42':1700,'43':1500,'44':4000,'45':2800,'46':1800,'47':1800,'48':1500,'49':2900,
+  '50':2100,'51':2400,'52':1300,'53':1700,'54':2400,'55':1300,'56':3100,'57':2100,'58':1200,'59':2600,
+  '60':2800,'61':1500,'62':2100,'63':2500,'64':3700,'65':2100,'66':2500,'67':3200,'68':2500,'69':4900,
+  '70':1500,'71':1800,'72':2200,'73':4200,'74':4900,'75':12500,'76':2700,'77':3500,'78':4800,'79':1800,
+  '80':2300,'81':2100,'82':1900,'83':4000,'84':2900,'85':2900,'86':2100,'87':1800,'88':1500,'89':1800,
+  '90':1700,'91':3700,'92':6800,'93':4200,'94':5200,'95':3500,
+  // DOM
+  '97':2800,'98':3200
+};
+const DEPT_NAMES = {
+  '01':'Ain','02':'Aisne','03':'Allier','04':'Alpes-de-Haute-Provence','05':'Hautes-Alpes','06':'Alpes-Maritimes',
+  '07':'Ard\u00e8che','08':'Ardennes','09':'Ari\u00e8ge','10':'Aube','11':'Aude','12':'Aveyron','13':'Bouches-du-Rh\u00f4ne',
+  '14':'Calvados','15':'Cantal','16':'Charente','17':'Charente-Maritime','18':'Cher','19':'Corr\u00e8ze','20':'Corse',
+  '21':"C\u00f4te-d'Or",'22':"C\u00f4tes-d'Armor",'23':'Creuse','24':'Dordogne','25':'Doubs','26':'Dr\u00f4me',
+  '27':'Eure','28':'Eure-et-Loir','29':'Finist\u00e8re','2a':'Corse-du-Sud','2b':'Haute-Corse',
+  '30':'Gard','31':'Haute-Garonne','32':'Gers','33':'Gironde','34':'H\u00e9rault','35':'Ille-et-Vilaine',
+  '36':'Indre','37':'Indre-et-Loire','38':'Is\u00e8re','39':'Jura','40':'Landes','41':'Loir-et-Cher','42':'Loire',
+  '43':'Haute-Loire','44':'Loire-Atlantique','45':'Loiret','46':'Lot','47':'Lot-et-Garonne','48':'Loz\u00e8re',
+  '49':'Maine-et-Loire','50':'Manche','51':'Marne','52':'Haute-Marne','53':'Mayenne','54':'Meurthe-et-Moselle',
+  '55':'Meuse','56':'Morbihan','57':'Moselle','58':'Ni\u00e8vre','59':'Nord','60':'Oise','61':'Orne',
+  '62':'Pas-de-Calais','63':'Puy-de-D\u00f4me','64':'Pyr\u00e9n\u00e9es-Atlantiques','65':'Hautes-Pyr\u00e9n\u00e9es',
+  '66':'Pyr\u00e9n\u00e9es-Orientales','67':'Bas-Rhin','68':'Haut-Rhin','69':'Rh\u00f4ne','70':'Haute-Sa\u00f4ne','71':'Sa\u00f4ne-et-Loire',
+  '72':'Sarthe','73':'Savoie','74':'Haute-Savoie','75':'Paris','76':'Seine-Maritime','77':'Seine-et-Marne',
+  '78':'Yvelines','79':'Deux-S\u00e8vres','80':'Somme','81':'Tarn','82':'Tarn-et-Garonne','83':'Var','84':'Vaucluse',
+  '85':'Vend\u00e9e','86':'Vienne','87':'Haute-Vienne','88':'Vosges','89':'Yonne','90':'Territoire de Belfort',
+  '91':'Essonne','92':'Hauts-de-Seine','93':'Seine-Saint-Denis','94':'Val-de-Marne','95':"Val-d'Oise",
+  '97':'DOM','98':'DOM'
+};
+
+function normalizeCity(s){
+  return (s||'').toLowerCase().trim()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/['\u2019]/g,'-').replace(/\s+/g,' ')
+    .replace(/^paris\s*([0-9]{1,2})/, function(_,n){ const p = parseInt(n,10); return '750' + (p<10?'0'+p:p); });
+}
+
+function deptFromCp(cp){
+  // Gestion Corse 2A / 2B (CP 20xxx)
+  if (cp.startsWith('20')) {
+    const num = parseInt(cp, 10);
+    return (num >= 20000 && num < 20200) ? '2a' : '2b';
+  }
+  // DOM 97xxx / 98xxx
+  if (cp.startsWith('97')) return '97';
+  if (cp.startsWith('98')) return '98';
+  return cp.slice(0, 2);
+}
+
+function detectCityPrice(input){
+  const v = normalizeCity(input);
+  if (!v) return { price: NATIONAL_AVG, label: 'France (moyenne)', found:false };
+
+  // 1) Code postal complet (5 chiffres) - n'importe lequel
+  const cpMatch = v.match(/\b(\d{5})\b/);
+  if (cpMatch) {
+    const cp = cpMatch[1];
+    // a) Match exact (Paris arrondissement)
+    if (CITY_PRICES[cp]) {
+      return { price: CITY_PRICES[cp], label: 'Paris ' + parseInt(cp.slice(3),10) + 'e', found:true };
+    }
+    // b) Fallback d\u00e9partement
+    const dept = deptFromCp(cp);
+    if (DEPT_PRICES[dept]) {
+      return { price: DEPT_PRICES[dept], label: (DEPT_NAMES[dept] || ('D\u00e9partement ' + dept)) + ' (' + cp + ')', found:true };
+    }
+  }
+
+  // 2) Nom de ville - match exact
+  for (const k in CITY_PRICES){
+    if (v === k) return { price: CITY_PRICES[k], label: k.charAt(0).toUpperCase()+k.slice(1), found:true };
+  }
+  // 3) Nom de ville - contient (mots significatifs \u2265 4 lettres)
+  for (const k in CITY_PRICES){
+    if (k.length > 3 && v.indexOf(k) !== -1) return { price: CITY_PRICES[k], label: k.charAt(0).toUpperCase()+k.slice(1), found:true };
+  }
+  // 4) Nom de ville - inverse (la saisie est contenue dans une cl\u00e9)
+  if (v.length >= 4) {
+    for (const k in CITY_PRICES){
+      if (k.indexOf(v) !== -1) return { price: CITY_PRICES[k], label: k.charAt(0).toUpperCase()+k.slice(1), found:true };
+    }
+  }
+
+  return { price: NATIONAL_AVG, label: 'France (moyenne)', found:false };
+}
+
+const estType = document.getElementById('estType');
+const estCity = document.getElementById('estCity');
+const estSurface = document.getElementById('estSurface');
+const estSurfaceVal = document.getElementById('estSurfaceVal');
+const estPieces = document.getElementById('estPieces');
+const estCondition = document.getElementById('estCondition');
+const estLow = document.getElementById('estLow');
+const estHigh = document.getElementById('estHigh');
+const estAvg = document.getElementById('estAvg');
+const estCityLabel = document.getElementById('estCityLabel');
+const estCommission = document.getElementById('estCommission');
+const estMeterBar = document.getElementById('estMeterBar');
+
+let estState = { type:'apt', city:'', surface:75, pieces:3, condition:'good' };
+
+function fmt(n){ return Math.round(n).toLocaleString('fr-FR').replace(/,/g,' ') + ' \u20ac'; }
+
+function updateEstimate(){
+  const cityInfo = detectCityPrice(estState.city);
+  let pricePerSqm = cityInfo.price;
+  // Modifier type
+  if (estState.type === 'house') pricePerSqm *= 1.05;
+  // Modifier \u00e9tat
+  const condMods = { 'renov':.82, 'good':1.0, 'very-good':1.10, 'new':1.20 };
+  pricePerSqm *= condMods[estState.condition] || 1;
+  // Modifier nb de pi\u00e8ces (prime studios)
+  const pieceMods = { 1:1.10, 2:1.02, 3:1.0, 4:.97, 5:.94 };
+  pricePerSqm *= pieceMods[estState.pieces] || 1;
+  // Prix total
+  const total = pricePerSqm * estState.surface;
+  const low = total * 0.92;
+  const high = total * 1.08;
+  // Commission \u00e9quivalente (5%)
+  const commission = total * 0.05;
+  // Update DOM
+  estLow.textContent = fmt(low);
+  estHigh.textContent = fmt(high);
+  estAvg.textContent = fmt(total);
+  estCityLabel.textContent = cityInfo.found ? '\u2014 ' + cityInfo.label : '';
+  estCommission.textContent = '~' + fmt(commission);
+  // Slider fill visual
+  const pct = ((estState.surface - 15) / (300 - 15)) * 100;
+  estSurface.style.setProperty('--slider-pct', pct + '%');
+  // Meter bar : position sur le march\u00e9 (15% = bas, 90% = haut)
+  const meterPct = Math.min(95, Math.max(15, 25 + (pricePerSqm/8000)*60));
+  estMeterBar.style.width = meterPct + '%';
+}
+
+// Listeners type
+estType.querySelectorAll('.est-toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    estType.querySelectorAll('.est-toggle-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    estState.type = btn.dataset.type;
+    updateEstimate();
+  });
+});
+// Listener city
+estCity.addEventListener('input', (e) => { estState.city = e.target.value; updateEstimate(); });
+// Listener surface
+estSurface.addEventListener('input', (e) => {
+  estState.surface = parseInt(e.target.value, 10);
+  estSurfaceVal.textContent = estState.surface + ' m\u00b2';
+  updateEstimate();
+});
+// Listener pieces
+estPieces.querySelectorAll('.est-piece-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    estPieces.querySelectorAll('.est-piece-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    estState.pieces = parseInt(btn.dataset.piece, 10);
+    updateEstimate();
+  });
+});
+// Listener condition
+estCondition.addEventListener('change', (e) => { estState.condition = e.target.value; updateEstimate(); });
+
+// Init
+updateEstimate();
+
+// ===== CALCULATOR =====
+const slider = document.getElementById('priceSlider');
+const monthSlider = document.getElementById('monthSlider');
+const priceDisplay = document.getElementById('priceDisplay');
+const monthDisplay = document.getElementById('monthDisplay');
+const savingsDisplay = document.getElementById('savingsDisplay');
+const agencyFee = document.getElementById('agencyFee');
+const bbaFee = document.getElementById('bbaFee');
+const ctaSavings = document.getElementById('ctaSavings');
+
+function formatEuro(n) { return n.toLocaleString('fr-FR') + ' \u20ac'; }
+
+function updateCalc() {
+  const price = parseInt(slider.value);
+  const months = parseInt(monthSlider.value);
+  const commission = price * 0.05;
+  const bbaCost = months * 290;
+  const savings = commission - bbaCost;
+  priceDisplay.textContent = formatEuro(price);
+  monthDisplay.textContent = months + ' mois';
+  savingsDisplay.textContent = formatEuro(Math.round(savings));
+  agencyFee.textContent = formatEuro(Math.round(commission));
+  bbaFee.textContent = formatEuro(bbaCost);
+  ctaSavings.textContent = Math.round(savings).toLocaleString('fr-FR');
+}
+
+slider.addEventListener('input', updateCalc);
+monthSlider.addEventListener('input', updateCalc);
+updateCalc();
+
+// ===== FAQ — une seule ouverte à la fois =====
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// ===== STICKY BAR + NAV SCROLL =====
+const stickyBar = document.getElementById('stickyBar');
+const mainNav = document.getElementById('mainNav');
+let lastScrollY = 0;
+let scrollTicking = false;
+
+function onScroll() {
+  const y = window.scrollY;
+  // Nav scrolled state (compact + style premium au scroll)
+  if (y > 30) {
+    mainNav.classList.add('scrolled');
+  } else {
+    mainNav.classList.remove('scrolled');
+  }
+  // Sticky bottom bar
+  stickyBar.classList.toggle('visible', y > 800);
+  lastScrollY = y;
+  scrollTicking = false;
+}
+
+window.addEventListener('scroll', () => {
+  if (!scrollTicking) {
+    window.requestAnimationFrame(onScroll);
+    scrollTicking = true;
+  }
+}, { passive: true });
+
+// ===== QUIZ =====
+const questions = [
+  {
+    q: "Quel est votre rapport avec la vente immobili\u00e8re ?",
+    opts: [
+      { text: "C'est ma premi\u00e8re vente, je d\u00e9couvre", score: 2 },
+      { text: "J'ai d\u00e9j\u00e0 vendu un bien par le pass\u00e9", score: 3 },
+      { text: "J'ai vendu plusieurs biens, je connais bien", score: 3 }
+    ]
+  },
+  {
+    q: "\u00cates-vous disponible pour organiser des visites ?",
+    opts: [
+      { text: "Oui, je peux m'organiser en semaine et/ou week-end", score: 3 },
+      { text: "Oui mais uniquement le week-end", score: 2 },
+      { text: "C'est compliqu\u00e9, j'ai tr\u00e8s peu de disponibilit\u00e9s", score: 1 }
+    ]
+  },
+  {
+    q: "Quel niveau d'accompagnement souhaitez-vous ?",
+    opts: [
+      { text: "Je veux tout g\u00e9rer seul avec les bons outils", score: 3, rec: "essentiel" },
+      { text: "Je veux un coach pour me guider aux \u00e9tapes cl\u00e9s", score: 3, rec: "coaching" },
+      { text: "Je veux que quelqu'un fasse tout \u00e0 ma place", score: 1, rec: "agence" }
+    ]
+  }
+];
+
+let currentQ = 0;
+let totalScore = 0;
+let recommendation = "coaching";
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  document.getElementById('quizQuestion').textContent = q.q;
+  const opts = document.getElementById('quizOptions');
+  opts.innerHTML = '';
+  q.opts.forEach((o, i) => {
+    const btn = document.createElement('div');
+    btn.className = 'quiz-option';
+    btn.textContent = o.text;
+    btn.addEventListener('click', () => selectAnswer(i));
+    opts.appendChild(btn);
+  });
+  // Update dots
+  for (let i = 0; i < 3; i++) {
+    const dot = document.getElementById('dot' + i);
+    dot.className = 'dot' + (i < currentQ ? ' done' : i === currentQ ? ' active' : '');
+  }
+}
+
+function selectAnswer(idx) {
+  const q = questions[currentQ];
+  totalScore += q.opts[idx].score;
+  if (q.opts[idx].rec) recommendation = q.opts[idx].rec;
+
+  document.querySelectorAll('.quiz-option').forEach((o, i) => {
+    o.classList.toggle('selected', i === idx);
+  });
+
+  setTimeout(() => {
+    currentQ++;
+    if (currentQ < questions.length) {
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  }, 400);
+}
+
+function showResult() {
+  document.getElementById('quizContent').style.display = 'none';
+  const result = document.getElementById('quizResult');
+  result.classList.add('show');
+
+  const pct = Math.round((totalScore / 9) * 100);
+  const scoreNum = document.getElementById('scoreNum');
+  const ring = document.getElementById('scoreRing');
+  const text = document.getElementById('scoreText');
+
+  scoreNum.textContent = pct + '%';
+
+  if (pct >= 70) {
+    ring.className = 'score-ring high';
+    if (recommendation === 'essentiel') {
+      text.innerHTML = '<strong>Profil id\u00e9al pour le Pack Essentiel !</strong><br>Vous \u00eates autonome et savez ce que vous voulez. Avec nos outils et la diffusion sur 30+ portails, vous avez tout pour vendre rapidement et \u00e9conomiser des milliers d\u2019euros.';
+    } else {
+      text.innerHTML = '<strong>Le Pack Coaching est parfait pour vous !</strong><br>Vous voulez garder le contr\u00f4le tout en \u00e9tant accompagn\u00e9 par un expert. C\u2019est exactement ce que ByeByeAgent propose : votre vente, votre rythme, avec un coach d\u00e9di\u00e9.';
+    }
+  } else {
+    ring.className = 'score-ring medium';
+    text.innerHTML = '<strong>ByeByeAgent peut vous aider, avec le bon accompagnement.</strong><br>Le Pack Coaching est con\u00e7u pour les vendeurs qui veulent un filet de s\u00e9curit\u00e9. Votre coach g\u00e8re les aspects techniques et vous guide \u00e0 chaque \u00e9tape, tout en vous faisant \u00e9conomiser des milliers d\u2019euros.';
+  }
+
+  // Update dots
+  for (let i = 0; i < 3; i++) {
+    document.getElementById('dot' + i).className = 'dot done';
+  }
+}
+
+renderQuestion();
+
+// ===== HAMBURGER / DRAWER =====
+const navHamburger = document.getElementById('navHamburger');
+const mobileDrawer = document.getElementById('mobileDrawer');
+const drawerBackdrop = document.getElementById('drawerBackdrop');
+const drawerClose = document.getElementById('drawerClose');
+
+function openDrawer() {
+  mobileDrawer.classList.add('open');
+  navHamburger.classList.add('open');
+  navHamburger.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+function closeDrawer() {
+  mobileDrawer.classList.remove('open');
+  navHamburger.classList.remove('open');
+  navHamburger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+navHamburger.addEventListener('click', () => {
+  mobileDrawer.classList.contains('open') ? closeDrawer() : openDrawer();
+});
+drawerBackdrop.addEventListener('click', closeDrawer);
+drawerClose.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+// ===== SCROLL REVEAL =====
+const revealEls = document.querySelectorAll('.stats,.vs-section,.cost-timeline,.how,.calculator,.quiz-section,.objections,.pricing,.options-section,.live-feed,.testimonials,.trust,.vs-pap,.support-360,.network,.benefits-hidden,.lead-section,.faq,.portals');
+revealEls.forEach(el => el.classList.add('reveal'));
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revealObserver.observe(el));
+
+// ===== LIVE FEED V2 =====
+// Duplique les items pour la boucle infinie du marquee
+(function initLiveFeed(){
+  const track = document.getElementById('feedTrack');
+  if(!track) return;
+  const items = Array.from(track.children);
+  // Clone tous les items pour assurer une boucle seamless (translate -50%)
+  items.forEach(it => track.appendChild(it.cloneNode(true)));
+
+  // Compteurs incr&eacute;mentaux pour donner sensation de "live"
+  const elActive  = document.getElementById('feedStatActive');
+  const elSold    = document.getElementById('feedStatSold');
+  const elVisits  = document.getElementById('feedStatVisits');
+  const elSavings = document.getElementById('feedStatSavings');
+
+  let active = 1247, sold = 312, visits = 4821, savings = 5.8;
+  function fmtFr(n){ return n.toLocaleString('fr-FR').replace(/\s/g,'\u202F'); }
+
+  // Toutes les 4-9s, incr&eacute;mente al&eacute;atoirement (sans devenir fou)
+  setInterval(() => {
+    const action = Math.random();
+    if (action < 0.45) {
+      // Nouvelle visite
+      visits += Math.floor(Math.random()*3)+1;
+      if (elVisits) elVisits.textContent = fmtFr(visits);
+    } else if (action < 0.75) {
+      // Nouvelle annonce active
+      active += 1;
+      if (elActive) elActive.textContent = fmtFr(active);
+    } else if (action < 0.92) {
+      // Vente effectu&eacute;e
+      sold += 1;
+      savings += (Math.random()*8 + 8) / 1000; // +8-16k\u20ac convertis en M\u20ac
+      if (elSold) elSold.textContent = fmtFr(sold);
+      if (elSavings) elSavings.textContent = savings.toFixed(1).replace('.', ',') + '\u00A0M\u20AC';
+    } else {
+      // Petit retrait (annonce retir&eacute;e/vendue)
+      if (active > 1200) active -= 1;
+      if (elActive) elActive.textContent = fmtFr(active);
+    }
+  }, 4000 + Math.random()*5000);
+})();
+</script>
+
+</body>
+</html>
